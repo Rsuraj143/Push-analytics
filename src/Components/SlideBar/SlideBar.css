@@ -30,9 +30,6 @@
     opacity: 0;
     pointer-events: none;
 }
-.sidebar.active #btn {
-    left: 90%;
-}
 .sidebar #btn {
     position: absolute;
     color: #fff;
@@ -43,6 +40,10 @@
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
+.sidebar.active #btn {
+    left: 90%;
+}
+
 .sidebar ul {
     margin-top: 20px;
 }
@@ -64,6 +65,9 @@
     transition: all 0.4s ease;
     border-radius: 8px;
     white-space: nowrap;
+}
+.sidebar ul li .icons img{
+    margin-right: 20px;
 }
 .sidebar.active ul li .tooltip {
     display: none;
