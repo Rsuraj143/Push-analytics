@@ -18,13 +18,23 @@
 .search-box {
     position: relative;
 }
-.search-box .bx-search {
+/* .search-box .bx-search {
     color: #fff;
     font-size: 22px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     left: 15px;
+} */
+
+.search-box img{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+}
+.search-box input:focus + img{
+    filter: brightness(15);
 }
 .search-box input {
     border-radius: 12px;
