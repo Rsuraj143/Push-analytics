@@ -30,10 +30,6 @@ border-radius: 12px 12px 0px 0px !important;
 .tabs-main .nav-link.active{
     background-color: #F9F9F9 !important;
     border-color: #94A3B8 !important;
-    /* border-width: 1px 1px 0px 1px;
-    border-style: solid;
-    border-color: #94A3B8;
-    border-radius: 12px 12px 0px 0px; */
 }
 .tabs-main .nav-link h4{
     margin-bottom: 5px;

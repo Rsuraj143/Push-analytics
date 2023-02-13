@@ -6,7 +6,9 @@ const Setting = () => {
   return (
     <div>
       <SlideBar/>
-      <Header></Header>
+      <Header>
+        
+      </Header>
     </div>
   )
 }
