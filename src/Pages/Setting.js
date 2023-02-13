@@ -2,13 +2,13 @@ import React from 'react'
 import Header from '../Components/Header/Header'
 import SlideBar from '../Components/SlideBar/SlideBar'
 
-const Home = () => {
+const Setting = () => {
   return (
     <div>
       <SlideBar/>
-      <Header/>
+      <Header></Header>
     </div>
   )
 }
 
-export default Home
+export default Setting

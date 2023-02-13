@@ -61,7 +61,7 @@ const SlideBar = () => {
             <span class="tooltip">Dashboard</span>
           </li>
           <li>
-            <Link to="#">
+            <Link to="/dailyFlash">
               <div className="icons">
                 <img src={DailyFlash} alt="dashbord" />
               </div>
@@ -112,7 +112,7 @@ const SlideBar = () => {
             <span class="tooltip">English</span>
           </li>
           <li>
-            <Link to="#">
+            <Link to="/setting">
               <div className="icons">
                 <img src={Settings} alt="dashbord" />
               </div>
