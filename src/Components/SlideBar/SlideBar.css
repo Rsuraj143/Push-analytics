@@ -20,6 +20,14 @@
     opacity: 1;
     pointer-events: none;
 }
+.sidebar.active .link_names {
+    opacity: 1;
+    pointer-events: auto;
+}
+.sidebar .link_names {
+    opacity: 0;
+    pointer-events: none;
+}
 .sidebar .logo_content .logo {
     color: #fff;
     display: flex;
