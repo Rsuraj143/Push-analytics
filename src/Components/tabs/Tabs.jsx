@@ -58,6 +58,7 @@ const Tabs = () => {
           </Nav.Link>
       </Nav.Item>
     </Nav>
+    
     </div>
   )
 }
