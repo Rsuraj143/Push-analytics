@@ -6,13 +6,12 @@ import msg from "../../Images/h-msg.svg"
 import user from "../../Images/h-user.svg"
 import  Search  from "../../Images/search.svg"
 
-const Header = () => {
+const Header = ({children}) => {
   return (
     <div class="home_content">
       <header class="header">
         <div class="header-main">
           <div class="search-box">
-            {/* <i class="bx bx-search"></i> */}
             <input type="text" placeholder="Search..." />
             <img src={Search}  alt="dashbord"/>
           </div>
@@ -30,7 +29,7 @@ const Header = () => {
           </ul>
         </div>
       </header>
-     
+     {children}
     </div>
   )
 }

@@ -14,7 +14,7 @@ import Settings from "../../Images/Settings.svg";
 
 const SlideBar = () => {
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  // const handleClick = () => setClick(!click);
 
   const btnref = useRef();
   const handleSlide = () => {
