@@ -8,7 +8,7 @@ const Home = () => {
     <div>
         <SlideBar/>
         <Header>
-        <Tabs/>
+        
         </Header>
     </div>
   )

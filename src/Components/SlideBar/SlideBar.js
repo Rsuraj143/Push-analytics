@@ -42,7 +42,7 @@ const SlideBar = () => {
       <div className="sidebar-box">
         <ul class="nav_list">
           <li>
-            <Link to="#">
+            <Link to="/">
               <div className="icons">
                 <img src={Liveview} alt="dashbord" />
               </div>
