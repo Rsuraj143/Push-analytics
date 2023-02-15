@@ -81,6 +81,14 @@
     color: #FFFFFF;
     border: 2px solid #424867;
 }
+.my-button.blue{
+    background: #2563EB;
+    border: 2px solid #2563EB;
+}
+.my-button.blue:hover{
+    background: transparent;
+    color: #2563EB;
+}
 .account-form{
     background: #FFFFFF;
     border: 1px solid #EAECF0;
@@ -98,7 +106,27 @@ form .user-input{
     display: inline-block;
     font-weight: 400;
     font-size: 16px;
-    line-height: 1px;
+    line-height: 1;
+    width: 100%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-appearance: none;
+    position: relative;
+    outline: none;
+}
+form .user-input::placeholder{
+   color:  #212529;
+}
+form .form-select{
+    height: 44px;
+    padding: 12px 14px;
+    border: 1px solid #CBD5E1;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
     width: 100%;
     text-overflow: ellipsis;
     word-wrap: break-word;
@@ -116,7 +144,11 @@ form .user-input:focus{
     border: 1px solid #424867;
     outline: none;
     box-shadow: none;
-
+}
+form .form-select:focus{
+    border: 1px solid #424867;
+    outline: none;
+    box-shadow: none;
 }
 form .form-label{
     font-weight: 500;

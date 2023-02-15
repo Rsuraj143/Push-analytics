@@ -134,7 +134,37 @@ const Settingtab = () => {
               </div>
             </Tab.Pane>
             <Tab.Pane eventKey="Team">
-              uygn  yhbnjhn u8njn unjn unj mnu8n ujm j i ik jioi9 i i0ko   i9iiko i
+            <div className='personal-info invite'>
+              <div className='heading'>
+                <h6>Invite members</h6>
+              </div>
+                <Form className='account-form'>
+              <Row>
+                  <Col sm={5} >
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Label>Email users</Form.Label>
+                  <Form.Control type="email" className='user-input' placeholder="Email users" />
+                </Form.Group>
+                  </Col>
+                  <Col sm={5} >
+                  <Form.Label>Select</Form.Label>
+                  <Form.Select aria-label="Default select example">
+                    <option>Role</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
+                  </Col>
+                  <Col sm={2} >
+                    <Button href="#" className='my-button blue'>Send invite</Button>
+                  </Col>
+              </Row>
+              </Form> 
+              <div className='text-end button-box'>
+                <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
+                <Button href="#" className='my-button'>Save changes</Button>
+               </div>
+              </div>
             </Tab.Pane>
 
           </Tab.Content>
