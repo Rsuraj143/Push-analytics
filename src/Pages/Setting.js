@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Components/Header/Header'
-import SlideBar from '../Components/SlideBar/SlideBar'
 import Settingtab from '../Components/Setting/Settingtab'
+import SlideBar from '../Components/SlideBar/SlideBar'
 
 
 const Setting = () => {

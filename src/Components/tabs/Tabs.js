@@ -29,7 +29,7 @@ const Tabs = () => {
     setToggleState(index);
   };
   return (
-    <div>
+    <div className="daily-flash-tab">
       <div className="main-heading">
         <h1>Daily Flash</h1>
       </div>
@@ -118,123 +118,12 @@ const Tabs = () => {
         </Nav>
       </div>
       <div className="tab-box">
-        <TabBox  />
-        {/* <TabBox data={data} />
-        <TabBox data={data} />
-        <TabBox data={data} />
-        <TabBox data={data} />
-        <TabBox data={data} />
-        <TabBox data={data} /> */}
-        {/* <div className="item">
-        <div className="heading1">
-          <img src={mer} alt="mer" />
-          <h4>MER(ROAS)</h4>
-        </div>
-        <div className="heading2">
-          <h4>Sept 14th</h4>
-        </div>
-        <div className="heading3">
-          <p>5.5</p><span>(-10%)</span>
-        </div>
-        <div className="heading2 heading4">
-          <h4>Sept 13th</h4>
-        </div>
-        <div className="heading5">
-          <h4>4.3</h4>
-        </div>
+       <div className="scroll-left">
+           <TabBox />
+       </div>
+        
       </div>
-      <div className="item">
-        <div className="heading1">
-          <img src={mer} alt="mer" />
-          <h4>MER(ROAS)</h4>
-        </div>
-        <div className="heading2">
-          <h4>Sept 14th</h4>
-        </div>
-        <div className="heading3">
-          <p>5.5</p><span>(-10%)</span>
-        </div>
-        <div className="heading2 heading4">
-          <h4>Sept 13th</h4>
-        </div>
-        <div className="heading5">
-          <h4>4.3</h4>
-        </div>
-      </div>
-      <div className="item">
-        <div className="heading1">
-          <img src={mer} alt="mer" />
-          <h4>MER(ROAS)</h4>
-        </div>
-        <div className="heading2">
-          <h4>Sept 14th</h4>
-        </div>
-        <div className="heading3">
-          <p>5.5</p><span>(-10%)</span>
-        </div>
-        <div className="heading2 heading4">
-          <h4>Sept 13th</h4>
-        </div>
-        <div className="heading5">
-          <h4>4.3</h4>
-        </div>
-      </div>
-      <div className="item">
-        <div className="heading1">
-          <img src={mer} alt="mer" />
-          <h4>MER(ROAS)</h4>
-        </div>
-        <div className="heading2">
-          <h4>Sept 14th</h4>
-        </div>
-        <div className="heading3">
-          <p>5.5</p><span>(-10%)</span>
-        </div>
-        <div className="heading2 heading4">
-          <h4>Sept 13th</h4>
-        </div>
-        <div className="heading5">
-          <h4>4.3</h4>
-        </div>
-      </div>
-      <div className="item">
-        <div className="heading1">
-          <img src={mer} alt="mer" />
-          <h4>MER(ROAS)</h4>
-        </div>
-        <div className="heading2">
-          <h4>Sept 14th</h4>
-        </div>
-        <div className="heading3">
-          <p>5.5</p><span>(-10%)</span>
-        </div>
-        <div className="heading2 heading4">
-          <h4>Sept 13th</h4>
-        </div>
-        <div className="heading5">
-          <h4>4.3</h4>
-        </div>
-      </div>
-      <div className="item">
-        <div className="heading1">
-          <img src={mer} alt="mer" />
-          <h4>MER(ROAS)</h4>
-        </div>
-        <div className="heading2">
-          <h4>Sept 14th</h4>
-        </div>
-        <div className="heading3">
-          <p>5.5</p><span>(-10%)</span>
-        </div>
-        <div className="heading2 heading4">
-          <h4>Sept 13th</h4>
-        </div>
-        <div className="heading5">
-          <h4>4.3</h4>
-        </div>
-      </div> */}
-      </div>
-      <div>
+      <div className="chart-main">
         <Chart/>
       </div>
     </div>

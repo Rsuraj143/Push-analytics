@@ -4,6 +4,7 @@ body{
 }
 .main-heading{
     padding: 40px 24px 30px;
+    background: #fff;
 }
 .main-heading h1{
     font-family: 'Inter', sans-serif;
@@ -11,6 +12,9 @@ body{
     font-weight: 600;
     font-size: 32px;
     line-height: 40px;
+}
+.tabs-main{
+    background: #fff;
 }
 .tabs-main .nav-tabs{
     border-bottom: 1px solid #94A3B8;
@@ -82,7 +86,12 @@ border-radius: 12px 12px 0px 0px !important;
 /* tab-box */
 .tab-box{
     margin-top: 30px;
-    padding-left: 24px;
+    padding: 0 30px 0 24px;
+}
+.tab-box .scroll-left > :first-child{
+    overflow-x: scroll;
+    width: 100%;
+    display: flex;
 }
 .tab-box .item{
     display: inline-block;
@@ -91,6 +100,7 @@ border-radius: 12px 12px 0px 0px !important;
     box-shadow: 0px 0px 8px -3px rgba(178, 191, 211, 0.25), 0px 6px 20px -3px rgba(209, 213, 220, 0.2);
     border-radius: 12px;
     margin-right: 12px;
+    min-width: 150px;
 }
 .tab-box .item .heading1{
     display: flex;
@@ -148,4 +158,19 @@ border-radius: 12px 12px 0px 0px !important;
     line-height: 22px;
     color: #64748B;
     margin-bottom: 0;
+}
+
+/* chart-main */
+.chart-main{
+    padding: 26px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    margin: 20px 30px 0 24px;
+}
+.chart-main .recharts-wrapper{
+    width: 100% !important;
+}
+.chart-main .recharts-wrapper svg{
+    width: 100% !important;
 }
