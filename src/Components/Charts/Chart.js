@@ -92,9 +92,9 @@ const Chart = () => {
             <stop offset="95%" stopColor="#AE2FB0" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
-        <YAxis type="number" domain={[0, 12000]} tickCount={10}/>
-        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" tickLine={false} />
+        <YAxis type="number" domain={[0, 12000]} tickCount={10} axisLine={false}/>
+        <CartesianGrid strokeDasharray="10 10" vertical={false} />
         <Tooltip />
         <Area
           type="monotone"

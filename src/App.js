@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Setting from './Pages/Setting';
 import DailyFlash from './Pages/DailyFlash';
 import Home from './Pages/Home';
+import LiveView from './Pages/LiveView';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/dailyFlash' element={<DailyFlash/>} />
         <Route path='/setting' element={<Setting/>} />
+        <Route path= "/liveView" element={<LiveView/> }/>
       </Routes>
       </BrowserRouter>
     </div>
