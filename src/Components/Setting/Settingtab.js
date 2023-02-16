@@ -1,7 +1,14 @@
 import React from 'react'
 import "./Settingtab.css";
-import { Col, Dropdown, DropdownButton, Form, InputGroup, Nav, Row, Tab } from 'react-bootstrap'
+import { Col, Dropdown, DropdownButton, Form, InputGroup, Nav, Row, Tab, Table } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
+import {AiOutlineQuestionCircle} from 'react-icons/ai';
+// import delete from "../../Images/delete.svg";
+// import edit from "../../Images/edit.svg";
+import deleteicon from "../../Images/deleteicon.svg"
+import  editicon  from "../../Images/editicon.svg"
+
+
 
 const Settingtab = () => {
   return (
@@ -147,26 +154,93 @@ const Settingtab = () => {
                 </Form.Group>
                   </Col>
                   <Col sm={5} >
-                  <Form.Label>Select</Form.Label>
-                  <Form.Select aria-label="Default select example">
-                    <option>Role</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </Form.Select>
+                    <div className="mb-3">
+                    <Form.Label >Select</Form.Label>
+                    <Form.Select aria-label="Default select example">
+                      <option>Role</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </Form.Select>
+                  </div>
                   </Col>
-                  <Col sm={2} >
+                  <Col sm={2} className="align-self-end mb-3" >
                     <Button href="#" className='my-button blue'>Send invite</Button>
                   </Col>
               </Row>
               </Form> 
-              <div className='text-end button-box'>
-                <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
-                <Button href="#" className='my-button'>Save changes</Button>
-               </div>
-              </div>
+            </div>
+            <div className='tabel-main'>
+            <Table  hover>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Last active 
+                    <div className='active-icon'><AiOutlineQuestionCircle/>
+                    </div>
+                    <p className='active-text'>The last time a user was logged in and active</p>
+                  </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div className='name-box d-flex align-items-center'>
+                      <div className='name-round'>
+                        <p>CW</p>
+                      </div>
+                      <div className='name-details'>
+                        <h6>Candice Wu</h6>
+                        <p>@candice</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className='admin'>Admin</div>
+                  </td>
+                  <td>4 days ago</td>
+                  <td>
+                    <div className='icon-box'>
+                    <img src={deleteicon} alt="delete" />
+                    <img src={editicon} alt="edit" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='name-box d-flex align-items-center'>
+                      <div className='name-round'>
+                        <p>CW</p>
+                      </div>
+                      <div className='name-details'>
+                        <h6>Candice Wu</h6>
+                        <p>@candice</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className='admin user'>Admin</div>
+                  </td>
+                  <td>4 days ago</td>
+                  <td>
+                    <div className='icon-box'>
+                    <img src={deleteicon} alt="delete" />
+                    <img src={editicon} alt="edit" />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </Table>
+            </div>
             </Tab.Pane>
-
+            <Tab.Pane eventKey="Integration">
+            <Row>
+            <Col sm={6}>
+            </Col>
+            </Row>
+            </Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>

@@ -169,3 +169,135 @@ form .forget-text{
     border: 1px solid #EAECF0;
     border-radius: 0 0 8px 8px;
 }
+
+
+/* tabel */
+table{
+    table-layout: fixed;
+}
+table tr th{
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #667085;
+    padding: 12px 24px !important;
+    background-color: #E2E8F0 !important;
+    position: relative;
+}
+table tr th::after{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 20px;
+    background: #CBD5E1;
+}
+table tr th:last-child::after {
+    display: none;
+}
+table tr td{
+    padding: 22px 24px !important;
+}
+table tr:hover td{
+background: #fff ;
+}
+.name-box .name-round{
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #F1F5F9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+}
+.name-box .name-round p{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #475569;
+    margin-bottom: 0;
+}
+.name-details h6{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #334155;
+    margin-bottom: 0;
+}
+.name-details p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #94A3B8;
+    margin-bottom: 0;
+}
+.admin{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #2563EB;
+    padding: 4px 10px;
+    background: #EFF6FF;
+    border-radius: 10px;
+    display: inline-block;
+}
+.admin.user{
+    color: #18065F;
+    background: #F1F1FF;
+}
+.active-icon{
+    display: inline;
+    margin-left: 8px;
+    cursor: pointer;
+}
+.active-icon svg{
+    width: 18px;
+    height: 18px;
+    color: #94A3B8;
+}
+.icon-box{
+    display: inline; 
+}
+.icon-box img:first-child{
+    margin-right: 12px;
+}
+
+.active-text{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+    background: #94A3B8;
+    border-radius: 8px;
+    padding: 8px 12px;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    z-index: 1;
+    white-space: nowrap;
+    transition: 0.3s all;
+    opacity: 0;
+}
+.active-text::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    transform: translateX(-50%) rotate(135deg);
+    background: #94A3B8;
+    width: 15px;
+    height: 15px;
+    z-index: -1;
+   
+}
+.active-icon:hover + .active-text{
+    opacity: 1;
+}
