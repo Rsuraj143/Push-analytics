@@ -23,6 +23,33 @@
 .personal-info{
     padding-bottom: 20px;
 }
+.upload-box{
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    /* border: 1px dashed #E2E8F0; */
+    border-radius: 8px;
+    padding: 16px 24px;
+}
+.upload-box label{
+    width: 100%;
+}
+.upload-box p{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #64748B; 
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+.upload-box p span{
+    font-weight: 500;
+    color: #2563EB;
+}
+.close-file{
+    margin-left: 20px;
+    cursor: pointer;
+}
 .password{
     padding-top: 24px;
     padding-bottom: 0;
@@ -99,6 +126,9 @@
     border-radius: 8px 8px 0 0;
     padding: 24px;
     border-bottom: 0;
+}
+.user-group{
+    margin-bottom: 24px;
 }
 form .user-input{
     height: 44px;
@@ -180,6 +210,7 @@ table{
     table-layout: fixed;
     border-color:#F1F5F9 !important ;
     background: #fff;
+    margin-bottom: 0 !important;
 }
 table tr th{
     font-weight: 600;
@@ -346,7 +377,7 @@ background: #fff ;
     /* display: inline-block; */
     /* background: rgba(45, 230, 14, 0.06);
     border-radius: 6px; */
-    margin: 10px 0;
+    margin: 10px 0 0 0;
 }
 .integration-main .error-box span{
     font-weight: 500;
@@ -386,7 +417,8 @@ background: #fff ;
     font-size: 14px;
     line-height: 20px;
     color: #334155;
-    margin-bottom: 0    ;
+    margin-bottom: 0 ;
+    margin-top: 10px;
 }
 
 /* goal tab */
@@ -542,3 +574,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     border-color: #2563EB;
 }
 
+@media (max-width:991px){
+    .notification-right .notification-form .form-switch {
+        padding: 22px 24px;
+    }
+}

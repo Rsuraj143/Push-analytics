@@ -1,4 +1,5 @@
 import React from "react";
+import "./Chart.css";
 import { useEffect, useState } from "react";
 import {
   Area,

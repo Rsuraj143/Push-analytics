@@ -6,10 +6,15 @@
     position: absolute;
     left: 60px;
     width: calc(100% - 60px);
+    transition: all 0.5s ease;
+    z-index: -1;
 }
 .header {
     padding: 12px 24px;
     background: #14171F;
+    position: sticky;
+    top: 0;
+    z-index: 1034;
 }
 .header-main {
     display: flex;
@@ -34,6 +39,9 @@
     transform: translateY(-50%);
     left: 15px;
 }
+.search-box input::placeholder{
+    color: #94A3B8;
+}
 .search-box input:focus + img{
     filter: brightness(15);
 }
@@ -46,7 +54,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: #94A3B8;
+    color: #fff;
 }
 .icon-list {
     display: flex !important;

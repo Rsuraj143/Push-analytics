@@ -12,18 +12,19 @@ body{
     font-size: 32px;
     line-height: 40px;
 }
-.tabs-main{
-    background: #fff;
-}
+
 .tabs-main .nav-tabs{
     border-bottom: 1px solid #94A3B8;
+    padding-left: 24px;
+    flex-wrap: nowrap;
+    align-items: end;
 }
 .tabs-main .nav-item{
     margin-right: 10px;
 }
-.tabs-main .nav-item:first-child{
-    padding-left: 24px;
-}
+/* .tabs-main .nav-item:first-child{
+   
+} */
 .tabs-main .nav-link{
 padding: 10px 10px;
 border-width: 1px 1px 0px 1px !important;
@@ -158,17 +159,3 @@ border-radius: 12px 12px 0px 0px !important;
     margin-bottom: 0;
 }
 
-/* chart-main */
-.chart-main{
-    padding: 26px;
-    background: #FFFFFF;
-    border: 1px solid #E2E8F0;
-    border-radius: 12px;
-    margin: 20px 30px 0 24px;
-}
-.chart-main .recharts-wrapper{
-    width: 100% !important;
-}
-.chart-main .recharts-wrapper svg{
-    width: 100% !important;
-}

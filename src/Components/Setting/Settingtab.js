@@ -3,17 +3,20 @@ import "./Settingtab.css";
 import { Col, Dropdown, DropdownButton, Form, InputGroup, Nav, Row, Tab, Table } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import {AiOutlineQuestionCircle} from 'react-icons/ai';
+import {AiFillCloseCircle} from 'react-icons/ai';
 import deleteicon from "../../Images/deleteicon.svg"
 import  editicon  from "../../Images/editicon.svg"
 import  googledrive  from "../../Images/googledrive.svg"
 import  Facebook  from "../../Images/Facebook.svg"
 import  goaledit  from "../../Images/goaledit.svg"
 import  btnarrow  from "../../Images/btnarrow.svg"
-
+import  upload  from "../../Images/upload.svg"
+import  uploaduser  from "../../Images/uploaduser.svg"
 
 const Settingtab = () => {
   const [isShown, setIsShown] = useState(false);
-  console.log(isShown);
+  const [file, setFile] = useState(null);
+  console.log(file);
   return (
     <div>
      <div className='main-heading'>
@@ -22,7 +25,7 @@ const Settingtab = () => {
      <div className='setting-tabs'>
      <Tab.Container id="left-tabs-example" defaultActiveKey="Profile">
       <Row>
-        <Col lg={3} >
+        <Col lg={3} className="mb-lg-0 mb-md-3" >
           <Nav variant="pills" className="flex-column">
             <Nav.Item>
               <Nav.Link eventKey="Profile">Profile</Nav.Link>
@@ -55,13 +58,13 @@ const Settingtab = () => {
                 <Form className='account-form'>
                 <Row>
                   <Col lg={6} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group" controlId="exampleForm.ControlInput1">
                   <Form.Label>First name</Form.Label>
                   <Form.Control type="text" className='user-input' placeholder="First name" />
                 </Form.Group>
                   </Col>
                   <Col lg={6} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group" controlId="exampleForm.ControlInput1">
                   <Form.Label>Last name</Form.Label>
                   <Form.Control type="text" className='user-input' placeholder="Last name" />
                 </Form.Group>
@@ -69,14 +72,14 @@ const Settingtab = () => {
               </Row>
               <Row>
                   <Col lg={6} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Email" />
                 </Form.Group>
                   </Col>
                   <Col lg={6} >
                   <Form.Label>Phone</Form.Label>
-                  <InputGroup className="mb-3">
+                  <InputGroup className="user-group">
                     <DropdownButton
                       variant="outline-secondary"
                       title="US"
@@ -92,15 +95,33 @@ const Settingtab = () => {
                   </Col>
               </Row>
               <Row>
-                <Col lg={12} >
-                <Form.Group controlId="formFileLg" className="mb-3">
-                <Form.Control type="file" size="lg" />
-                </Form.Group>
-                </Col>
-              </Row>
+              <Col lg={2} xxl={1} className="mb-3 text-lg-start text-md-center">
+                <img src={uploaduser} className="uploaduser" alt="uploaduser" />
+              </Col>
+              <Col lg={10} xxl={11} >
+              <div className='upload-box'>
+              <input type="file" name="file" id="file" className="d-none" onChange={e => {setFile(e.target.files[0]); e.target.value= null}} />
+              {
+                !file ? 
+                <label for="file">
+                <img src={upload} alt="upload" />
+                <p><span>Click to upload</span> or drag and drop <br></br>
+                SVG, PNG, JPG or GIF (max. 800x400px)</p>
+              </label>  
+                : 
+                <div>{file?.name} 
+                <AiFillCloseCircle onClick={()=>setFile(null)} className="close-file"/>
+                </div>
+              }
               
+              </div>
+              {/* <Form.Group controlId="formFileLg" className="user-group">
+              <Form.Control type="file" size="lg" />
+              </Form.Group> */}
+              </Col>
+              </Row>
               </Form> 
-              <div className='text-end button-box'>
+              <div className='text-lg-end text-md-start button-box'>
                 <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
                 <Button href="#" className='my-button'>Save changes</Button>
                </div>
@@ -113,31 +134,31 @@ const Settingtab = () => {
                 <Form className='account-form'>
                 <Row>
                   <Col lg={6} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group" controlId="exampleForm.ControlInput1">
                   <Form.Label>Current password</Form.Label>
                   <Form.Control type="text" className='user-input' placeholder="Current password" />
                 </Form.Group>
                   </Col>
                   <Col lg={6} className="d-flex align-items-center" >
-                  <p className='m-0 forget-text'>Did you forget your password?</p>
+                  <p className='mb-lg-0 mb-md-3 forget-text'>Did you forget your password?</p>
                   </Col>
               </Row>
               <Row>
                   <Col lg={6} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group mb-lg-0" controlId="exampleForm.ControlInput1">
                   <Form.Label>Current password</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Current password" />
                 </Form.Group>
                   </Col>
                   <Col lg={6} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group mb-0" controlId="exampleForm.ControlInput1">
                   <Form.Label>Re-enter New Password</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Re-enter New Password" />
                 </Form.Group>
                   </Col>
               </Row>
               </Form> 
-              <div className='text-end button-box'>
+              <div className='text-lg-end text-md-start button-box'>
                 <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
                 <Button href="#" className='my-button'>Save changes</Button>
                </div>
@@ -152,13 +173,13 @@ const Settingtab = () => {
                 <Form className='account-form'>
               <Row>
                   <Col xl={5} >
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Group className="user-group" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email users</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Email users" />
                 </Form.Group>
                   </Col>
                   <Col xl={5} >
-                    <div className="mb-3">
+                    <div className="user-group">
                     <Form.Label >Select</Form.Label>
                     <Form.Select aria-label="Default select example">
                       <option>Role</option>
@@ -168,7 +189,7 @@ const Settingtab = () => {
                     </Form.Select>
                   </div>
                   </Col>
-                  <Col xl={2} className="align-self-end mb-3" >
+                  <Col xl={2} className="align-self-end" >
                     <Button href="#" className='my-button blue'>Send invite</Button>
                   </Col>
               </Row>
@@ -242,7 +263,7 @@ const Settingtab = () => {
             
             <Tab.Pane eventKey="Integration">
             <Row>
-              <Col lg={6}>
+              <Col xl={6} className="mb-xl-0 mb-3">
                 <div className='integration-main'>
                   <div className='integrat-heading  d-flex justify-content-between'>
                     <div className='img-box d-flex align-items-center'>
@@ -262,7 +283,7 @@ const Settingtab = () => {
                   <p className='integrat-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum hac porttitor felis tristique quis sagittis nec sed.</p>
                 </div>
               </Col>
-              <Col lg={6}>
+              <Col xl={6}>
                 <div className='integration-main'>
                   <div className='integrat-heading  d-flex justify-content-between'>
                     <div className='img-box d-flex align-items-center'>
@@ -327,7 +348,7 @@ const Settingtab = () => {
                     </Table>
                     </div>
                 </div>
-                <div className='text-end button-box'>
+                <div className='text-lg-end text-md-start button-box'>
                     <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
                     <Button href="#" className='my-button'>Save changes</Button>
                 </div>
@@ -340,8 +361,8 @@ const Settingtab = () => {
                   <p>Setting up authentication</p>
                 </div>
                   <Row>
-                <Col lg={6}>
-                  <div className='authentication-main'>
+                <Col xl={6}>
+                  <div className='authentication-main mb-xl-0 mb-3'>
                     <div className='authentication-heading d-flex align-items-center justify-content-between'>
                       <h4>Authenticator App</h4>
                       <span>Off</span>
@@ -350,7 +371,7 @@ const Settingtab = () => {
                     <Button href="#" className='my-button blue'>Set Up <img src={btnarrow} alt='btnarrow'></img></Button>
                   </div>
                 </Col>
-                <Col lg={6}>
+                <Col xl={6}>
                   <div className='authentication-main'>
                     <div className='authentication-heading d-flex align-items-center justify-content-between'>
                       <h4>Text Message</h4>
@@ -404,7 +425,7 @@ const Settingtab = () => {
               <div className='notification-main'>
                 <div className='notification'>
                 <Row className=''>
-                  <Col lg={4}>
+                  <Col xl={4} lg={5}>
                   <div className='notification-left'>
                   <Form className='account-form'>
                     <div className='tab-heading'>
@@ -418,7 +439,7 @@ const Settingtab = () => {
                     </Form>
                 </div>
                   </Col>
-                  <Col lg={8}>
+                  <Col xl={8} lg={7}>
                   <div className='notification-right'>
                   <Form className='notification-form'>
                     <Form.Check 
@@ -443,7 +464,7 @@ const Settingtab = () => {
                 </div>
                 <div className='notification'>
                 <Row className=''>
-                  <Col lg={4}>
+                  <Col xl={4} lg={5}>
                   <div className='notification-left'>
                   <Form className='account-form'>
                     <div className='tab-heading'>
@@ -457,7 +478,7 @@ const Settingtab = () => {
                     </Form>
                 </div>
                   </Col>
-                  <Col lg={8}>
+                  <Col xl={8} lg={7}>
                   <div className='notification-right'>
                   <Form className='notification-form'>
                     <Form.Check 
@@ -480,7 +501,7 @@ const Settingtab = () => {
                   </Col>
                   </Row>
                 </div>
-                <div className='text-end button-box'>
+                <div className='text-lg-end text-md-start button-box'>
                 <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
                 <Button href="#" className='my-button'>Save changes</Button>
                </div>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./SlideBar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Liveview from "../../Images/Live-view.svg";
 import dashbord from "../../Images/Dashboard.svg";
 import DailyFlash from "../../Images/Daily-Flash.svg";
@@ -61,13 +61,13 @@ const SlideBar = () => {
             <span class="tooltip">Dashboard</span>
           </li>
           <li>
-            <Link to="/dailyFlash">
+            <NavLink to="/dailyFlash">
               <div className="icons">
                 <img src={DailyFlash} alt="dashbord" />
               </div>
 
               <span class="link_names">Daily Flash</span>
-            </Link>
+            </NavLink>
             <span class="tooltip">Daily Flash</span>
           </li>
           <li>
@@ -112,12 +112,12 @@ const SlideBar = () => {
             <span class="tooltip">English</span>
           </li>
           <li>
-            <Link to="/setting">
+            <NavLink to="/setting">
               <div className="icons">
                 <img src={Settings} alt="dashbord" />
               </div>
               <span class="link_names">Settings</span>
-            </Link>
+            </NavLink>
             <span class="tooltip">Settings</span>
           </li>
           <li>

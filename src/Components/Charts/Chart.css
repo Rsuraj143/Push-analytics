@@ -1,0 +1,17 @@
+/* chart-main */
+.chart-main{
+    padding: 26px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    margin: 20px 30px 0 24px;
+}
+.chart-main .recharts-wrapper{
+    width: 100% !important;
+}
+.chart-main .recharts-wrapper svg{
+    width: 100% !important;
+}
+.recharts-legend-wrapper{
+    width: 100% !important;
+}
