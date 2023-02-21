@@ -4,7 +4,6 @@ body{
 }
 .main-heading{
     padding: 40px 24px 30px;
-    background: #fff;
 }
 .main-heading h1{
     font-family: 'Inter', sans-serif;
@@ -141,7 +140,6 @@ border-radius: 12px 12px 0px 0px !important;
     font-size: 18px;
     line-height: 22px;
     color: #0F172A;
-
 }
 .tab-box .item .heading3 span{
     font-weight: 500;

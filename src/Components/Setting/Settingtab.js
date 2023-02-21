@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Settingtab.css";
 import { Col, Dropdown, DropdownButton, Form, InputGroup, Nav, Row, Tab, Table } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import {AiOutlineQuestionCircle} from 'react-icons/ai';
-// import delete from "../../Images/delete.svg";
-// import edit from "../../Images/edit.svg";
 import deleteicon from "../../Images/deleteicon.svg"
 import  editicon  from "../../Images/editicon.svg"
-
+import  googledrive  from "../../Images/googledrive.svg"
+import  Facebook  from "../../Images/Facebook.svg"
+import  goaledit  from "../../Images/goaledit.svg"
+import  btnarrow  from "../../Images/btnarrow.svg"
 
 
 const Settingtab = () => {
+  const [isShown, setIsShown] = useState(false);
+  console.log(isShown);
   return (
     <div>
      <div className='main-heading'>
@@ -19,7 +22,7 @@ const Settingtab = () => {
      <div className='setting-tabs'>
      <Tab.Container id="left-tabs-example" defaultActiveKey="Profile">
       <Row>
-        <Col sm={2} >
+        <Col lg={3} >
           <Nav variant="pills" className="flex-column">
             <Nav.Item>
               <Nav.Link eventKey="Profile">Profile</Nav.Link>
@@ -41,23 +44,23 @@ const Settingtab = () => {
             </Nav.Item>
           </Nav>
         </Col>
-        <Col sm={10}>
+        <Col lg={9}>
           <Tab.Content>
             <Tab.Pane eventKey="Profile">
               <div className='personal-info'>
-              <div className='heading'>
+              <div className='tab-heading'>
                 <h6>Personal info</h6>
                 <p>Update your photo and personal details.</p>
               </div>
                 <Form className='account-form'>
                 <Row>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>First name</Form.Label>
                   <Form.Control type="text" className='user-input' placeholder="First name" />
                 </Form.Group>
                   </Col>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Last name</Form.Label>
                   <Form.Control type="text" className='user-input' placeholder="Last name" />
@@ -65,13 +68,13 @@ const Settingtab = () => {
                   </Col>
               </Row>
               <Row>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Email" />
                 </Form.Group>
                   </Col>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Label>Phone</Form.Label>
                   <InputGroup className="mb-3">
                     <DropdownButton
@@ -89,7 +92,7 @@ const Settingtab = () => {
                   </Col>
               </Row>
               <Row>
-                <Col sm={12} >
+                <Col lg={12} >
                 <Form.Group controlId="formFileLg" className="mb-3">
                 <Form.Control type="file" size="lg" />
                 </Form.Group>
@@ -103,30 +106,30 @@ const Settingtab = () => {
                </div>
               </div>
               <div className='personal-info password'>
-               <div className='heading'>
+               <div className='tab-heading'>
                 <h6>Password</h6>
                 <p>Update your password.</p>
                </div>
                 <Form className='account-form'>
                 <Row>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Current password</Form.Label>
                   <Form.Control type="text" className='user-input' placeholder="Current password" />
                 </Form.Group>
                   </Col>
-                  <Col sm={6} className="d-flex align-items-center" >
+                  <Col lg={6} className="d-flex align-items-center" >
                   <p className='m-0 forget-text'>Did you forget your password?</p>
                   </Col>
               </Row>
               <Row>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Current password</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Current password" />
                 </Form.Group>
                   </Col>
-                  <Col sm={6} >
+                  <Col lg={6} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Re-enter New Password</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Re-enter New Password" />
@@ -142,18 +145,18 @@ const Settingtab = () => {
             </Tab.Pane>
             <Tab.Pane eventKey="Team">
             <div className='personal-info invite'>
-              <div className='heading'>
+              <div className='tab-heading'>
                 <h6>Invite members</h6>
               </div>
                 <Form className='account-form'>
               <Row>
-                  <Col sm={5} >
+                  <Col xl={5} >
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email users</Form.Label>
                   <Form.Control type="email" className='user-input' placeholder="Email users" />
                 </Form.Group>
                   </Col>
-                  <Col sm={5} >
+                  <Col xl={5} >
                     <div className="mb-3">
                     <Form.Label >Select</Form.Label>
                     <Form.Select aria-label="Default select example">
@@ -164,7 +167,7 @@ const Settingtab = () => {
                     </Form.Select>
                   </div>
                   </Col>
-                  <Col sm={2} className="align-self-end mb-3" >
+                  <Col xl={2} className="align-self-end mb-3" >
                     <Button href="#" className='my-button blue'>Send invite</Button>
                   </Col>
               </Row>
@@ -221,7 +224,7 @@ const Settingtab = () => {
                     </div>
                   </td>
                   <td>
-                    <div className='admin user'>Admin</div>
+                    <div className='admin user'>user</div>
                   </td>
                   <td>4 days ago</td>
                   <td>
@@ -237,9 +240,249 @@ const Settingtab = () => {
             </Tab.Pane>
             <Tab.Pane eventKey="Integration">
             <Row>
-            <Col sm={6}>
-            </Col>
+              <Col lg={6}>
+                <div className='integration-main'>
+                  <div className='integrat-heading  d-flex justify-content-between'>
+                    <div className='img-box d-flex align-items-center'>
+                        <div className='icon'>
+                        <img src={googledrive} alt="googledrive" />
+                        </div>
+                        <span>Google Ads</span>
+                    </div>
+                    <div className='btn-box'>
+                      <Button href="#" className='my-button blue'>Connect</Button>
+                    </div>
+                  </div>
+                  <div className='error-box'>
+                      <span>Succes</span>
+                      <span className='error'>error</span>
+                  </div>
+                  <p className='integrat-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum hac porttitor felis tristique quis sagittis nec sed.</p>
+                </div>
+              </Col>
+              <Col lg={6}>
+                <div className='integration-main'>
+                  <div className='integrat-heading  d-flex justify-content-between'>
+                    <div className='img-box d-flex align-items-center'>
+                        <div className='icon'>
+                        <img src={Facebook} alt="Facebook" />
+                        </div>
+                        <span>Facebook Ads</span>
+                    </div>
+                    <div className='btn-box'>
+                      <Button href="#" className='my-button'>Disconnect</Button>
+                    </div>
+                  </div>
+                  <p className='integrat-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Elementum hac porttitor felis tristique quis sagittis nec sed.</p>
+                </div>
+              </Col>
             </Row>
+            </Tab.Pane>
+            <Tab.Pane eventKey="Goal">
+              <div className='goal-main'>
+                <div className='goal'>
+                    <div className='tabel-main'>
+                    <Table  hover>
+                      <thead>
+                        <tr>
+                          <th>Goal</th>
+                          <th>Target</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Sales</td>
+                          <td>11000 $</td>
+                        </tr>
+                        <tr>
+                          <td>Orders</td>
+                          <td
+                          className={isShown ? "on-hover" : ""} 
+                          onMouseEnter={() => setIsShown(true)}
+                          onMouseLeave={() => setIsShown(false)}
+                          >1000
+                           { isShown && <img  src={goaledit} alt="goaledit" />}
+                          {/* {isShown && <TbEdit/>} */}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>AOV</td>
+                          <td>120 $</td>
+                        </tr>
+                        <tr>
+                          <td>Sessions</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <td>Conv rate</td>
+                          <td>15%</td>
+                        </tr>
+                        <tr>
+                          <td>Spend</td>
+                          <td>1000 $</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                    </div>
+                </div>
+                <div className='text-end button-box'>
+                    <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
+                    <Button href="#" className='my-button'>Save changes</Button>
+                </div>
+               </div>
+            </Tab.Pane>
+            <Tab.Pane eventKey="Security">
+              <div className='security'>
+                <div className='tab-heading'>
+                  <h6>Multi Factor Authentication</h6>
+                  <p>Setting up authentication</p>
+                </div>
+                  <Row>
+                <Col lg={6}>
+                  <div className='authentication-main'>
+                    <div className='authentication-heading d-flex align-items-center justify-content-between'>
+                      <h4>Authenticator App</h4>
+                      <span>Off</span>
+                    </div>
+                    <p className='authentication-text'>Use an authenticator app to generate one time security codes.</p>
+                    <Button href="#" className='my-button blue'>Set Up <img src={btnarrow} alt='btnarrow'></img></Button>
+                  </div>
+                </Col>
+                <Col lg={6}>
+                  <div className='authentication-main'>
+                    <div className='authentication-heading d-flex align-items-center justify-content-between'>
+                      <h4>Text Message</h4>
+                      <span>Off</span>
+                    </div>
+                    <p className='authentication-text'>Use your mobile phone to receive security codes via SMS.</p>
+                    <Button href="#" className='my-button blue'>Set Up <img src={btnarrow} alt='btnarrow'></img></Button>
+                  </div>
+                </Col>
+            </Row>
+                
+                
+              </div>
+              <div className='login-history'>
+                <div className='tab-heading'>
+                    <h6>Login history</h6>
+                    <p>Your recent login activity:</p>
+                </div>
+                <Table  hover>
+              <thead>
+                <tr>
+                  <th>LOGIN TYPE</th>
+                  <th>IP ADDRESS</th>
+                  <th>CLIENT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                  Credentials login <br></br> on 10:40 AM 2021/09/01
+                  </td>
+                  <td>
+                  59.136.15.84
+                  </td>
+                  <td>Chrome, Mac OS 10.12.6</td>
+                </tr>
+                <tr>
+                  <td>
+                  Credentials login <br></br> on 10:40 AM 2021/09/01
+                  </td>
+                  <td>
+                  59.136.15.84
+                  </td>
+                  <td>Chrome, Mac OS 10.12.6</td>
+                </tr>
+              </tbody>
+            </Table>
+              </div>
+            </Tab.Pane>
+            <Tab.Pane eventKey="Notification">
+              <div className='notification-main'>
+                <div className='notification'>
+                <Row className=''>
+                  <Col lg={4}>
+                  <div className='notification-left'>
+                  <Form className='account-form'>
+                    <div className='tab-heading'>
+                        <h6>Daily Flash</h6>
+                        <p>If notifications are enabled, Daily Flash update will be sent at 9AM.</p>
+                    </div>
+                    <Form.Group className="" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Select time</Form.Label>
+                    <Form.Control type="time" value="09:00" className='user-input' placeholder="time" />
+                    </Form.Group>
+                    </Form>
+                </div>
+                  </Col>
+                  <Col lg={8}>
+                  <div className='notification-right'>
+                  <Form className='notification-form'>
+                    <Form.Check 
+                    label="Email"
+                      type="switch"
+                      id="custom-switch"
+                    />
+                    <Form.Check 
+                    label="Push"
+                      type="switch"
+                      id="custom-switch"
+                    />
+                    <Form.Check 
+                    label="SMS"
+                      type="switch"
+                      id="custom-switch"
+                    />
+                  </Form>
+                  </div>
+                  </Col>
+                  </Row>
+                </div>
+                <div className='notification'>
+                <Row className=''>
+                  <Col lg={4}>
+                  <div className='notification-left'>
+                  <Form className='account-form'>
+                    <div className='tab-heading'>
+                        <h6>Live View </h6>
+                        <p>Live View Notifications will be sent 12PM local time.</p>
+                    </div>
+                    <Form.Group className="" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Select time</Form.Label>
+                    <Form.Control type="time" value="12:00" className='user-input' placeholder="time" />
+                    </Form.Group>
+                    </Form>
+                </div>
+                  </Col>
+                  <Col lg={8}>
+                  <div className='notification-right'>
+                  <Form className='notification-form'>
+                    <Form.Check 
+                    label="Email"
+                      type="switch"
+                      id="custom-switch"
+                    />
+                    <Form.Check 
+                    label="Push"
+                      type="switch"
+                      id="custom-switch"
+                    />
+                    <Form.Check 
+                    label="SMS"
+                      type="switch"
+                      id="custom-switch"
+                    />
+                  </Form>
+                  </div>
+                  </Col>
+                  </Row>
+                </div>
+                <div className='text-end button-box'>
+                <Button href="#" className='my-button my-button-transparent'>Cancel</Button>
+                <Button href="#" className='my-button'>Save changes</Button>
+               </div>
+              </div>
             </Tab.Pane>
           </Tab.Content>
         </Col>
