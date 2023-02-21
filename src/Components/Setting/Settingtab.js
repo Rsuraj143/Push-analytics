@@ -143,6 +143,7 @@ const Settingtab = () => {
                </div>
               </div>
             </Tab.Pane>
+
             <Tab.Pane eventKey="Team">
             <div className='personal-info invite'>
               <div className='tab-heading'>
@@ -238,6 +239,7 @@ const Settingtab = () => {
             </Table>
             </div>
             </Tab.Pane>
+            
             <Tab.Pane eventKey="Integration">
             <Row>
               <Col lg={6}>

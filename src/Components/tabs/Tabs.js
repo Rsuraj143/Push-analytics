@@ -11,18 +11,6 @@ import Chart from "../Charts/Chart";
 
 const Tabs = () => {
 
-
-
-  // const data = {
-  //     image: mer,
-  //     heading: "MER(ROAS)",
-  //     current_date: "Sept 14th",
-  //     current_value: "5.5",
-  //     current_percentage: "-10%",
-  //     previous_value: "Sept 13th",
-  //     previous_percentage: "-10%",
-  // }
-
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
@@ -121,7 +109,6 @@ const Tabs = () => {
        <div className="scroll-left">
            <TabBox />
        </div>
-        
       </div>
       <div className="chart-main">
         <Chart/>
