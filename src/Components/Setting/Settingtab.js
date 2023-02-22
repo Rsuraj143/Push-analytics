@@ -29,7 +29,8 @@ const Settingtab = () => {
   const [country, setCountry] = useState([]);
   const [value, setValue] = useState("");
   const [phone, setPhone] = useState("");
-  
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
 
   console.log(isShown);
 
@@ -56,8 +57,24 @@ const Settingtab = () => {
   const addPhoneNumber = (e) => {
     const [dial_code, number] = e.target.value.split(value.dial_code);
     setPhone(number.trim());
+   
+    
   };
-  console.log(file);
+  
+  const handleFirstNameChange = evt => {
+    const newName = evt.target.value.replace(
+      /[^a-zA-Z\s]/g,
+      ""
+    );
+    setFName(newName);
+  };
+  const handleLastNameChange = evt => {
+    const newName = evt.target.value.replace(
+      /[^a-zA-Z\s]/g,
+      ""
+    );
+    setLName(newName);
+  };
   return (
     <div>
       <div className="main-heading">
@@ -106,6 +123,8 @@ const Settingtab = () => {
                             <Form.Label>First name</Form.Label>
                             <Form.Control
                               type="text"
+                              value={fname}
+                              onChange={handleFirstNameChange}
                               className="user-input"
                               placeholder="First name"
                             />
@@ -119,6 +138,8 @@ const Settingtab = () => {
                             <Form.Label>Last name</Form.Label>
                             <Form.Control
                               type="text"
+                              value={lname}
+                              onChange={handleLastNameChange}
                               className="user-input"
                               placeholder="Last name"
                             />
@@ -166,6 +187,7 @@ const Settingtab = () => {
                               aria-label="Text input with dropdown button"
                               value={`${value.dial_code} ${phone}`}
                               onChange={addPhoneNumber}
+                             
                             />
                           </InputGroup>
                         </Col>
