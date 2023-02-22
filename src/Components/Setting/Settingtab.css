@@ -303,10 +303,10 @@ background: #fff ;
     height: 18px;
     color: #94A3B8;
 }
-.icon-box{
+td .icon-box{
     display: inline; 
 }
-.icon-box img:first-child{
+td .icon-box img:first-child{
     margin-right: 12px;
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./tabs.css";
-import { Nav } from "react-bootstrap";
+import { Form, Nav } from "react-bootstrap";
 import { BiTrendingDown } from "react-icons/bi";
 import { BiTrendingUp } from "react-icons/bi";
 
@@ -18,8 +18,13 @@ const Tabs = () => {
   };
   return (
     <div className="daily-flash-tab">
-      <div className="main-heading">
+      <div className="main-heading d-flex justify-content-between">
         <h1>Daily Flash</h1>
+        <div className="date">
+        <Form className=''>
+            <input type="date" value="2017-06-01" className='user-input' />
+        </Form>
+        </div>
       </div>
       <div className="tabs-main">
         <Nav variant="tabs" defaultActiveKey="#">

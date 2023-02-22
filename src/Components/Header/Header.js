@@ -5,7 +5,7 @@ import notification from "../../Images/h-notification.svg"
 import msg from "../../Images/h-msg.svg"
 import user from "../../Images/h-user.svg"
 import  Search  from "../../Images/search.svg"
-
+import  Leslie  from "../../Images/Leslie.svg"
 const Header = ({children}) => {
   return (
     <div class="home_content">
@@ -30,7 +30,32 @@ const Header = ({children}) => {
         </div>
       </header>
      {children}
+
+     <div className='notifications-popup'>
+      <div className='notifications-popup-inner'>
+        <div className='notifications-count-main'>
+          <div className='notifications-count d-flex align-items-center'>
+              <h6>Notifications</h6>
+              <span>2</span>
+          </div>
+          <p className='mark-read'>Mark as read</p>
+        </div>
+        <div className='new-main'>
+            <h6>New</h6>
+        </div>
+        <div className='user-main'>
+          <div className='user-main-inner'>
+            <div className='icon-box'>
+              <img src={Leslie}  alt="Leslie"/>
+              <span>Leslie Alexander</span>
+            </div>
+            <p className='ago'>30 min ago</p>
+          </div>
+        </div>
+      </div>
+     </div>
     </div>
+    
   )
 }
 
