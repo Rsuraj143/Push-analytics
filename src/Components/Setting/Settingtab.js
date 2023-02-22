@@ -22,8 +22,8 @@ import goaledit from "../../Images/goaledit.svg";
 import btnarrow from "../../Images/btnarrow.svg";
 import upload from "../../Images/upload.svg";
 import uploaduser from "../../Images/uploaduser.svg";
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+// import { Formik, Field, Form, ErrorMessage } from 'formik';
+// import * as yup from 'yup';
 
 const Settingtab = () => {
   const [isShown, setIsShown] = useState(false);
