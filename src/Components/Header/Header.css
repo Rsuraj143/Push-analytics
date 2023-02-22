@@ -63,3 +63,73 @@
 .icon-list li {
     margin-right: 8px;
 }
+
+
+/* notifications-popup */
+.notifications-popup{
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0px 3px 13px rgba(199, 199, 199, 0.25), 0px 3px 10px rgba(96, 108, 128, 0.06);
+    border-radius: 12px;
+    padding: 20px 0;
+    width: 450px;
+    /* margin-left: auto; */
+}
+/* .notifications-popup-inner{
+    padding: 0 20px;
+} */
+.notifications-count-main{
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.notifications-count h6{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1E293B;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+.notifications-count span{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #2563EB;
+    background: #DBEAFE;
+    border-radius: 29px;
+    padding: 4px 15px;
+    /* min-width: 35px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mark-read{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #2563EB;
+    margin-bottom: 0;
+}
+.new-main{
+    padding: 10px 20px 10px;
+    border-bottom: 1px solid #E2E8F0;
+}
+.new-main h6{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #64748B;
+    margin-bottom: 0;
+}
+.user-main .user-main-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
