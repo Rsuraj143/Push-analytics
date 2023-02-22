@@ -22,6 +22,8 @@ import goaledit from "../../Images/goaledit.svg";
 import btnarrow from "../../Images/btnarrow.svg";
 import upload from "../../Images/upload.svg";
 import uploaduser from "../../Images/uploaduser.svg";
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 
 const Settingtab = () => {
   const [isShown, setIsShown] = useState(false);
@@ -31,6 +33,7 @@ const Settingtab = () => {
   const [phone, setPhone] = useState("");
   const [fname, setFName] = useState("");
   const [lname, setLName] = useState("");
+  const [data, setData] = useState([])
 
   console.log(isShown);
 
@@ -48,17 +51,12 @@ const Settingtab = () => {
     setCountry(res);
     handleSelect(res.find((data) => data.code === "US"));
   };
-
   const handleSelect = (e) => {
-    console.log(e);
     setValue(e);
   };
-
   const addPhoneNumber = (e) => {
     const [dial_code, number] = e.target.value.split(value.dial_code);
     setPhone(number.trim());
-   
-    
   };
   
   const handleFirstNameChange = evt => {
@@ -118,7 +116,7 @@ const Settingtab = () => {
                         <Col lg={6}>
                           <Form.Group
                             className="user-group"
-                            controlId="exampleForm.ControlInput1"
+                            
                           >
                             <Form.Label>First name</Form.Label>
                             <Form.Control
@@ -128,12 +126,14 @@ const Settingtab = () => {
                               className="user-input"
                               placeholder="First name"
                             />
+                            
                           </Form.Group>
+                         
                         </Col>
                         <Col lg={6}>
                           <Form.Group
                             className="user-group"
-                            controlId="exampleForm.ControlInput1"
+                            
                           >
                             <Form.Label>Last name</Form.Label>
                             <Form.Control
@@ -150,7 +150,7 @@ const Settingtab = () => {
                         <Col lg={6}>
                           <Form.Group
                             className="user-group"
-                            controlId="exampleForm.ControlInput1"
+                           
                           >
                             <Form.Label>Email</Form.Label>
                             <Form.Control
@@ -240,8 +240,7 @@ const Settingtab = () => {
               </Form.Group> */}
                         </Col>
                       </Row>
-                    </Form>
-                    <div className="text-lg-end text-md-start button-box">
+                      <div className="text-lg-end text-md-start button-box">
                       <Button
                         href="#"
                         className="my-button my-button-transparent"
@@ -252,6 +251,8 @@ const Settingtab = () => {
                         Save changes
                       </Button>
                     </div>
+                    </Form>
+                    
                   </div>
                   <div className="personal-info password">
                     <div className="tab-heading">
@@ -307,8 +308,7 @@ const Settingtab = () => {
                           </Form.Group>
                         </Col>
                       </Row>
-                    </Form>
-                    <div className="text-lg-end text-md-start button-box">
+                      <div className="text-lg-end text-md-start button-box">
                       <Button
                         href="#"
                         className="my-button my-button-transparent"
@@ -319,6 +319,8 @@ const Settingtab = () => {
                         Save changes
                       </Button>
                     </div>
+                    </Form>
+                   
                   </div>
                 </Tab.Pane>
 
