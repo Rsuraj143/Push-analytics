@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Header.css"
 import { Link } from 'react-router-dom'
 import notification from "../../Images/h-notification.svg"
@@ -6,7 +6,10 @@ import msg from "../../Images/h-msg.svg"
 import user from "../../Images/h-user.svg"
 import  Search  from "../../Images/search.svg"
 import  Leslie  from "../../Images/Leslie.svg"
+import  Arlene  from "../../Images/Arlene.svg"
+import  Albert   from "../../Images/Albert.svg"
 const Header = ({children}) => {
+  const [showNotification, setShowNotification] = useState(false)
   return (
     <div class="home_content">
       <header class="header">
@@ -17,7 +20,7 @@ const Header = ({children}) => {
           </div>
           <ul class="icon-list">
             <li>
-              <Link to="/"><img src={notification} alt="notification" /></Link>
+              <Link to="#"><img src={notification} alt="notification" onClick={()=> setShowNotification(!showNotification)} /></Link>
             </li>
             <li>
               <Link to="/"><img src={msg} alt="msg" /></Link>
@@ -31,6 +34,7 @@ const Header = ({children}) => {
       </header>
      {children}
 
+    {showNotification && 
      <div className='notifications-popup'>
       <div className='notifications-popup-inner'>
         <div className='notifications-count-main'>
@@ -51,9 +55,43 @@ const Header = ({children}) => {
             </div>
             <p className='ago'>30 min ago</p>
           </div>
+          <p className='user-text'>
+            Our daily flash is ready by December 20, sales are up 10%
+          </p>
+        </div>
+        <div className='new-main'>
+            <h6>Before that</h6>
+        </div>
+        <div className='user-main pb-0'>
+          <div className='user-main-inner'>
+            <div className='icon-box'>
+              <img src={Arlene}  alt="Arlene"/>
+              <span>Arlene McCoy</span>
+            </div>
+            <p className='ago'>2 day ago</p>
+          </div>
+          <p className='user-text'>
+            Our daily flash is ready by December 20, sales are up 10%
+          </p>
+        </div>
+        <div className='user-main'>
+          <div className='user-main-inner'>
+            <div className='icon-box'>
+              <img src={Albert}  alt="Albert"/>
+              <span>Albert Flores</span>
+            </div>
+            <p className='ago'>3 day ago</p>
+          </div>
+          <p className='user-text'>
+            Our daily flash is ready by December 20, sales are up 10%
+          </p>
+        </div>
+        <div className='view-all'>
+          <a href='#'>view-all</a>
         </div>
       </div>
      </div>
+     }
     </div>
     
   )
