@@ -22,8 +22,15 @@ import goaledit from "../../Images/goaledit.svg";
 import btnarrow from "../../Images/btnarrow.svg";
 import upload from "../../Images/upload.svg";
 import uploaduser from "../../Images/uploaduser.svg";
-// import { Formik, Field, Form, ErrorMessage } from 'formik';
-// import * as yup from 'yup';
+import * as yup from "yup";
+import { Formik } from "formik";
+
+const schema = yup.object().shape({
+  firstName: yup.string().required().matches(/^[a-zA-Z][a-zA-Z ]*$/,"only alphabets and white space") ,
+  lastName: yup.string().required().matches(/^[a-zA-Z][a-zA-Z ]*$/,"only alphabets and white space") ,
+  email: yup.string().required().matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,"Invalid format") ,
+  number: yup.number().required()
+});
 
 const Settingtab = () => {
   const [isShown, setIsShown] = useState(false);
@@ -31,11 +38,8 @@ const Settingtab = () => {
   const [country, setCountry] = useState([]);
   const [value, setValue] = useState("");
   const [phone, setPhone] = useState("");
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
-  const [data, setData] = useState([])
-
-  console.log(isShown);
+  // const [fname, setFName] = useState("");
+  // const [lname, setLName] = useState("");
 
   useEffect(() => {
     getcounty();
@@ -58,21 +62,15 @@ const Settingtab = () => {
     const [dial_code, number] = e.target.value.split(value.dial_code);
     setPhone(number.trim());
   };
-  
-  const handleFirstNameChange = evt => {
-    const newName = evt.target.value.replace(
-      /[^a-zA-Z\s]/g,
-      ""
-    );
-    setFName(newName);
-  };
-  const handleLastNameChange = evt => {
-    const newName = evt.target.value.replace(
-      /[^a-zA-Z\s]/g,
-      ""
-    );
-    setLName(newName);
-  };
+
+  // const handleFirstNameChange = (evt) => {
+  //   const newName = evt.target.value.replace(/[^a-zA-Z\s]/g, "");
+  //   setFName(newName);
+  // };
+  // const handleLastNameChange = (evt) => {
+  //   const newName = evt.target.value.replace(/[^a-zA-Z\s]/g, "");
+  //   setLName(newName);
+  // };
   return (
     <div>
       <div className="main-heading">
@@ -81,7 +79,7 @@ const Settingtab = () => {
       <div className="setting-tabs">
         <Tab.Container id="left-tabs-example" defaultActiveKey="Profile">
           <Row>
-        <Col lg={3} className="mb-lg-0 mb-md-3" >
+            <Col lg={3} className="mb-lg-0 mb-md-3">
               <Nav variant="pills" className="flex-column">
                 <Nav.Item>
                   <Nav.Link eventKey="Profile">Profile</Nav.Link>
@@ -106,58 +104,236 @@ const Settingtab = () => {
             <Col lg={9}>
               <Tab.Content>
                 <Tab.Pane eventKey="Profile">
-              <div className='personal-info'>
-              <div className='tab-heading'>
+                  <div className="personal-info">
+                    <div className="tab-heading">
                       <h6>Personal info</h6>
                       <p>Update your photo and personal details.</p>
                     </div>
-                    <Form className="account-form">
+
+                    <Formik
+                      validationSchema={schema}
+                      onSubmit={values=>{
+                        alert(JSON.stringify(values))
+                        console.log(values)
+                      }}
+                      initialValues={{
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                      }}
+                    >
+                      {({
+                        handleSubmit,
+                        handleChange,
+                        handleBlur,
+                        values,
+                        touched,
+                        isValid,
+                        errors,
+                      }) => (
+                        <Form
+                          className="account-form"
+                          noValidate
+                          onSubmit={handleSubmit}
+                        >
+                          <Row>
+                            <Col lg={6}>
+                              <Form.Group
+                                className="user-group"
+                                controlId="validationFormik01"
+                              >
+                                <Form.Label>First name</Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="firstName"
+                                  value={values.firstName}
+                                  onChange={handleChange}
+                                  isInvalid={!!errors.firstName}
+                                  className="user-input"
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                  {errors.firstName}
+                                </Form.Control.Feedback>
+                              </Form.Group>
+                            </Col>
+                            <Col lg={6}>
+                              <Form.Group className="user-group">
+                                <Form.Label>Last name</Form.Label>
+                                <Form.Control
+                                  type="text"
+                                  name="lastName"
+                                  value={values.lastName}
+                                  onChange={handleChange}
+                                  isInvalid={!!errors.lastName}
+                                  className="user-input"
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                  {errors.lastName}
+                                </Form.Control.Feedback>
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col lg={6}>
+                              <Form.Group className="user-group">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control
+                                  type="email"
+                                  className="user-input"
+                                  placeholder="Email"
+                                  name="email"
+                                  isInvalid={!!errors.email}
+                                  onChange={handleChange}
+                                  value={values.email}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                  {errors.email}
+                                </Form.Control.Feedback>
+                              </Form.Group>
+                            </Col>
+                            <Col lg={6}>
+                              <Form.Label>Phone</Form.Label>
+                              <InputGroup className="mb-3">
+                                <DropdownButton
+                                  variant="outline-secondary"
+                                  title={value.code}
+                                >
+                                  {country.map((res) => (
+                                    <Dropdown.Item
+                                      key={res.code}
+                                      title={res}
+                                      eventKey={res.key}
+                                      active={
+                                        res.code === value.code ? true : false
+                                      }
+                                      onClick={() => handleSelect(res)}
+                                    >
+                                      {res.code}
+                                    </Dropdown.Item>
+                                  ))}
+                                </DropdownButton>
+                                <Form.Control
+                                  className="user-input"
+                                  aria-label="Text input with dropdown button"
+                                  value={`${value.dial_code} ${phone}`}
+                                  name = "number"
+                                  onChange={addPhoneNumber}
+                                />
+                               
+                              </InputGroup>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col
+                              lg={2}
+                              xxl={1}
+                              className="mb-3 text-lg-start text-md-center"
+                            >
+                              <img
+                                src={uploaduser}
+                                className="uploaduser"
+                                alt="uploaduser"
+                              />
+                            </Col>
+                            <Col lg={10} xxl={11}>
+                              <div className="upload-box">
+                                <input
+                                  type="file"
+                                  name="file"
+                                  id="file"
+                                  className="d-none"
+                                  onChange={(e) => {
+                                    setFile(e.target.files[0]);
+                                    e.target.value = null;
+                                  }}
+                                />
+                                {!file ? (
+                                  <label for="file">
+                                    <img src={upload} alt="upload" />
+                                    <p>
+                                      <span>Click to upload</span> or drag and
+                                      drop <br></br>
+                                      SVG, PNG, JPG or GIF (max. 800x400px)
+                                    </p>
+                                  </label>
+                                ) : (
+                                  <div>
+                                    {file?.name}
+                                    <AiFillCloseCircle
+                                      onClick={() => setFile(null)}
+                                      className="close-file"
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            </Col>
+                          </Row>
+                          <div className="text-lg-end text-md-start button-box">
+                            <Button className="my-button my-button-transparent">
+                              Cancel
+                            </Button>
+                            <Button type="submit" className="my-button">
+                              Save changes
+                            </Button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
+
+                    {/* <Form className="account-form" noValidate onSubmit={handleSubmit}>
                       <Row>
                         <Col lg={6}>
-                          <Form.Group
-                            className="user-group"
-                            
-                          >
+                          <Form.Group className="user-group" controlId="validationFormik01">
                             <Form.Label>First name</Form.Label>
                             <Form.Control
+                              // type="text"
+                              // value={fname}
+                              // onChange={handleFirstNameChange}
+                              // className="user-input"
+                              // placeholder="First name"
                               type="text"
-                              value={fname}
-                              onChange={handleFirstNameChange}
+                              name="firstName"
+                              value={values.firstName}
+                              onChange={handleChange}
+                              isValid={touched.firstName && !errors.firstName}
                               className="user-input"
-                              placeholder="First name"
                             />
-                            
+                            <Form.Control.Feedback>{errors.firstName}</Form.Control.Feedback>
                           </Form.Group>
-                         
                         </Col>
                         <Col lg={6}>
-                          <Form.Group
-                            className="user-group"
-                            
-                          >
+                          <Form.Group className="user-group">
                             <Form.Label>Last name</Form.Label>
                             <Form.Control
+                              // type="text"
+                              // value={lname}
+                              // onChange={handleLastNameChange}
+                              // className="user-input"
+                              // placeholder="Last name"
                               type="text"
-                              value={lname}
-                              onChange={handleLastNameChange}
-                              className="user-input"
-                              placeholder="Last name"
+                name="lastName"
+                value={values.lastName}
+                onChange={handleChange}
+                isValid={touched.lastName && !errors.lastName}
+                className="user-input"
                             />
+                            <Form.Control.Feedback>{errors.lastName}</Form.Control.Feedback>
                           </Form.Group>
                         </Col>
                       </Row>
                       <Row>
                         <Col lg={6}>
-                          <Form.Group
-                            className="user-group"
-                           
-                          >
+                          <Form.Group className="user-group">
                             <Form.Label>Email</Form.Label>
                             <Form.Control
                               type="email"
                               className="user-input"
                               placeholder="Email"
+                              isValid ={touched.email && !errors.email}
+                              onChange={handleChange}
+                              value = {values.email}
                             />
+                            <Form.Control.Feedback>{errors.email}</Form.Control.Feedback>
                           </Form.Group>
                         </Col>
                         <Col lg={6}>
@@ -187,7 +363,6 @@ const Settingtab = () => {
                               aria-label="Text input with dropdown button"
                               value={`${value.dial_code} ${phone}`}
                               onChange={addPhoneNumber}
-                             
                             />
                           </InputGroup>
                         </Col>
@@ -235,24 +410,20 @@ const Settingtab = () => {
                               </div>
                             )}
                           </div>
-                          {/* <Form.Group controlId="formFileLg" className="user-group">
-              <Form.Control type="file" size="lg" />
-              </Form.Group> */}
                         </Col>
                       </Row>
                       <div className="text-lg-end text-md-start button-box">
-                      <Button
-                        href="#"
-                        className="my-button my-button-transparent"
-                      >
-                        Cancel
-                      </Button>
-                      <Button href="#" className="my-button">
-                        Save changes
-                      </Button>
-                    </div>
-                    </Form>
-                    
+                        <Button
+                          href="#"
+                          className="my-button my-button-transparent"
+                        >
+                          Cancel
+                        </Button>
+                        <Button href="#" className="my-button">
+                          Save changes
+                        </Button>
+                      </div>
+                    </Form> */}
                   </div>
                   <div className="personal-info password">
                     <div className="tab-heading">
@@ -309,18 +480,17 @@ const Settingtab = () => {
                         </Col>
                       </Row>
                       <div className="text-lg-end text-md-start button-box">
-                      <Button
-                        href="#"
-                        className="my-button my-button-transparent"
-                      >
-                        Cancel
-                      </Button>
-                      <Button href="#" className="my-button">
-                        Save changes
-                      </Button>
-                    </div>
+                        <Button
+                          href="#"
+                          className="my-button my-button-transparent"
+                        >
+                          Cancel
+                        </Button>
+                        <Button href="#" className="my-button">
+                          Save changes
+                        </Button>
+                      </div>
                     </Form>
-                   
                   </div>
                 </Tab.Pane>
 
