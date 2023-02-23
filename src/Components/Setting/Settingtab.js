@@ -26,10 +26,26 @@ import * as yup from "yup";
 import { Formik } from "formik";
 
 const schema = yup.object().shape({
-  firstName: yup.string().required().matches(/^[a-zA-Z][a-zA-Z ]*$/,"only alphabets and white space") ,
-  lastName: yup.string().required().matches(/^[a-zA-Z][a-zA-Z ]*$/,"only alphabets and white space") ,
-  email: yup.string().required().matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i,"Invalid format") ,
-  number: yup.number().required()
+  firstName: yup
+    .string()
+    .required()
+    .matches(/^[a-zA-Z][a-zA-Z ]*$/, "only alphabets and white space"),
+  lastName: yup
+    .string()
+    .required()
+    .matches(/^[a-zA-Z][a-zA-Z ]*$/, "only alphabets and white space"),
+  email: yup
+    .string()
+    .required()
+    .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i, "Invalid format"),
+  number: yup.number().required(),
+  password: yup.string()
+    .min(5, "Atleast 6 characters long")
+    .max(50, "Too Long")
+    .required(),
+  confirmPassword: yup.string()
+    .required("Required")
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
 const Settingtab = () => {
@@ -38,9 +54,7 @@ const Settingtab = () => {
   const [country, setCountry] = useState([]);
   const [value, setValue] = useState("");
   const [phone, setPhone] = useState("");
-  // const [fname, setFName] = useState("");
-  // const [lname, setLName] = useState("");
-
+  
   useEffect(() => {
     getcounty();
   }, []);
@@ -63,14 +77,11 @@ const Settingtab = () => {
     setPhone(number.trim());
   };
 
-  // const handleFirstNameChange = (evt) => {
-  //   const newName = evt.target.value.replace(/[^a-zA-Z\s]/g, "");
-  //   setFName(newName);
-  // };
-  // const handleLastNameChange = (evt) => {
-  //   const newName = evt.target.value.replace(/[^a-zA-Z\s]/g, "");
-  //   setLName(newName);
-  // };
+  const handleSubmit = (values, event) => {
+    console.log(values);
+    console.log("form submit values", event);
+  };
+  
   return (
     <div>
       <div className="main-heading">
@@ -112,9 +123,9 @@ const Settingtab = () => {
 
                     <Formik
                       validationSchema={schema}
-                      onSubmit={values=>{
-                        alert(JSON.stringify(values))
-                        console.log(values)
+                      onSubmit={(values) => {
+                        alert(JSON.stringify(values));
+                        console.log(values);
                       }}
                       initialValues={{
                         firstName: "",
@@ -216,10 +227,9 @@ const Settingtab = () => {
                                   className="user-input"
                                   aria-label="Text input with dropdown button"
                                   value={`${value.dial_code} ${phone}`}
-                                  name = "number"
+                                  name="number"
                                   onChange={addPhoneNumber}
                                 />
-                               
                               </InputGroup>
                             </Col>
                           </Row>
@@ -279,218 +289,145 @@ const Settingtab = () => {
                         </Form>
                       )}
                     </Formik>
-
-                    {/* <Form className="account-form" noValidate onSubmit={handleSubmit}>
-                      <Row>
-                        <Col lg={6}>
-                          <Form.Group className="user-group" controlId="validationFormik01">
-                            <Form.Label>First name</Form.Label>
-                            <Form.Control
-                              // type="text"
-                              // value={fname}
-                              // onChange={handleFirstNameChange}
-                              // className="user-input"
-                              // placeholder="First name"
-                              type="text"
-                              name="firstName"
-                              value={values.firstName}
-                              onChange={handleChange}
-                              isValid={touched.firstName && !errors.firstName}
-                              className="user-input"
-                            />
-                            <Form.Control.Feedback>{errors.firstName}</Form.Control.Feedback>
-                          </Form.Group>
-                        </Col>
-                        <Col lg={6}>
-                          <Form.Group className="user-group">
-                            <Form.Label>Last name</Form.Label>
-                            <Form.Control
-                              // type="text"
-                              // value={lname}
-                              // onChange={handleLastNameChange}
-                              // className="user-input"
-                              // placeholder="Last name"
-                              type="text"
-                name="lastName"
-                value={values.lastName}
-                onChange={handleChange}
-                isValid={touched.lastName && !errors.lastName}
-                className="user-input"
-                            />
-                            <Form.Control.Feedback>{errors.lastName}</Form.Control.Feedback>
-                          </Form.Group>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col lg={6}>
-                          <Form.Group className="user-group">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                              type="email"
-                              className="user-input"
-                              placeholder="Email"
-                              isValid ={touched.email && !errors.email}
-                              onChange={handleChange}
-                              value = {values.email}
-                            />
-                            <Form.Control.Feedback>{errors.email}</Form.Control.Feedback>
-                          </Form.Group>
-                        </Col>
-                        <Col lg={6}>
-                          <Form.Label>Phone</Form.Label>
-                          <InputGroup className="mb-3">
-                            <DropdownButton
-                              variant="outline-secondary"
-                              title={value.code}
-                            >
-                              {country.map((res) => (
-                                <Dropdown.Item
-                                  key={res.code}
-                                  title={res}
-                                  eventKey={res.key}
-                                  active={
-                                    res.code === value.code ? true : false
-                                  }
-                                  onClick={() => handleSelect(res)}
-                                >
-                                  {res.code}
-                                </Dropdown.Item>
-                              ))}
-                            </DropdownButton>
-                            <Form.Control
-                              className="user-input"
-                              placeholder="Phone"
-                              aria-label="Text input with dropdown button"
-                              value={`${value.dial_code} ${phone}`}
-                              onChange={addPhoneNumber}
-                            />
-                          </InputGroup>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col
-                          lg={2}
-                          xxl={1}
-                          className="mb-3 text-lg-start text-md-center"
-                        >
-                          <img
-                            src={uploaduser}
-                            className="uploaduser"
-                            alt="uploaduser"
-                          />
-                        </Col>
-                        <Col lg={10} xxl={11}>
-                          <div className="upload-box">
-                            <input
-                              type="file"
-                              name="file"
-                              id="file"
-                              className="d-none"
-                              onChange={(e) => {
-                                setFile(e.target.files[0]);
-                                e.target.value = null;
-                              }}
-                            />
-                            {!file ? (
-                              <label for="file">
-                                <img src={upload} alt="upload" />
-                                <p>
-                                  <span>Click to upload</span> or drag and drop{" "}
-                                  <br></br>
-                                  SVG, PNG, JPG or GIF (max. 800x400px)
-                                </p>
-                              </label>
-                            ) : (
-                              <div>
-                                {file?.name}
-                                <AiFillCloseCircle
-                                  onClick={() => setFile(null)}
-                                  className="close-file"
-                                />
-                              </div>
-                            )}
-                          </div>
-                        </Col>
-                      </Row>
-                      <div className="text-lg-end text-md-start button-box">
-                        <Button
-                          href="#"
-                          className="my-button my-button-transparent"
-                        >
-                          Cancel
-                        </Button>
-                        <Button href="#" className="my-button">
-                          Save changes
-                        </Button>
-                      </div>
-                    </Form> */}
                   </div>
                   <div className="personal-info password">
                     <div className="tab-heading">
                       <h6>Password</h6>
                       <p>Update your password.</p>
                     </div>
-                    <Form className="account-form">
-                      <Row>
-                        <Col lg={6}>
-                          <Form.Group
-                            className="user-group"
-                            controlId="exampleForm.ControlInput1"
-                          >
-                            <Form.Label>Current password</Form.Label>
-                            <Form.Control
-                              type="text"
-                              className="user-input"
-                              placeholder="Current password"
-                            />
-                          </Form.Group>
-                        </Col>
-                        <Col lg={6} className="d-flex align-items-center">
-                          <p className="mb-lg-0 mb-md-3 forget-text">
-                            Did you forget your password?
-                          </p>
-                        </Col>
-                      </Row>
-                      <Row>
-                        <Col lg={6}>
-                          <Form.Group
-                            className="user-group mb-lg-0"
-                            controlId="exampleForm.ControlInput1"
-                          >
-                            <Form.Label>Current password</Form.Label>
-                            <Form.Control
-                              type="email"
-                              className="user-input"
-                              placeholder="Current password"
-                            />
-                          </Form.Group>
-                        </Col>
-                        <Col lg={6}>
-                          <Form.Group
-                            className="user-group mb-0"
-                            controlId="exampleForm.ControlInput1"
-                          >
-                            <Form.Label>Re-enter New Password</Form.Label>
-                            <Form.Control
-                              type="email"
-                              className="user-input"
-                              placeholder="Re-enter New Password"
-                            />
-                          </Form.Group>
-                        </Col>
-                      </Row>
-                      <div className="text-lg-end text-md-start button-box">
-                        <Button
-                          href="#"
-                          className="my-button my-button-transparent"
+                    <Formik
+                      validationSchema={schema}
+                      onSubmit={handleSubmit}
+                      validateOnChange={false}
+                      initialValues={{
+                        password: "",
+                        confirmPassword: "",
+                      }}
+                    >
+                      {({
+                        handleSubmit,
+                        handleChange,
+                        handleBlur,
+                        values,
+                        touched,
+                        isValid,
+                        errors,
+                        isValidating,
+                      }) => (
+                        <Form
+                          className="account-form"
+                          noValidate
+                          onSubmit={(event) => handleSubmit(event)}
                         >
-                          Cancel
-                        </Button>
-                        <Button href="#" className="my-button">
-                          Save changes
-                        </Button>
-                      </div>
-                    </Form>
+                          <Row>
+                            <Col lg={6}>
+                              <Form.Group
+                                className="user-group"
+                                controlId="exampleForm.ControlInput1"
+                              >
+                                <Form.Label>Current password</Form.Label>
+                                <Form.Control
+                                  className="user-input"
+                                  type="password"
+                                  placeholder="password"
+                                  name="password"
+                                  value={values.password}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  isValid={touched.password && !errors.password}
+                                  isInvalid={
+                                    touched.password && !!errors.password
+                                  }
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                  {errors.password}
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>
+                                  Looks good!
+                                </Form.Control.Feedback>
+                              </Form.Group>
+                            </Col>
+                            <Col lg={6} className="d-flex align-items-center">
+                              <p className="mb-lg-0 mb-md-3 forget-text">
+                                Did you forget your password?
+                              </p>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col lg={6}>
+                              <Form.Group
+                                className="user-group mb-lg-0"
+                                controlId="exampleForm.ControlInput1"
+                              >
+                                <Form.Label>Current password</Form.Label>
+                                <Form.Control
+                                  className="user-input"
+                                  type="password"
+                                  placeholder="password"
+                                  name="password"
+                                  value={values.password}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  isValid={touched.password && !errors.password}
+                                  isInvalid={
+                                    touched.password && !!errors.password
+                                  }
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                  {errors.password}
+                                </Form.Control.Feedback>
+                                <Form.Control.Feedback>
+                                  Looks good!
+                                </Form.Control.Feedback>
+                              </Form.Group>
+                            </Col>
+                            <Col lg={6}>
+                              <Form.Group
+                                className="user-group mb-0"
+                                controlId="exampleForm.ControlInput1"
+                              >
+                                <Form.Label>Re-enter New Password</Form.Label>
+                                <Form.Control
+                                  className="user-input"
+                                  type="password"
+                                  placeholder="password"
+                                  name="confirmPassword"
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  value={values.confirmPassword}
+                                  isValid={
+                                    !errors.confirmPassword &&
+                                    touched.confirmPassword
+                                  }
+                                  isInvalid={
+                                    touched.confirmPassword &&
+                                    errors.confirmPassword
+                                  }
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                  {errors.confirmPassword}
+                                </Form.Control.Feedback>
+
+                                <Form.Control.Feedback>
+                                  Looks good!
+                                </Form.Control.Feedback>
+                              </Form.Group>
+                            </Col>
+                          </Row>
+                          <div className="text-lg-end text-md-start button-box">
+                            <Button
+                              href="#"
+                              className="my-button my-button-transparent"
+                            >
+                              Cancel
+                            </Button>
+                            <Button type="submit" className="my-button">
+                              Save changes
+                            </Button>
+                          </div>
+                        </Form>
+                      )}
+                    </Formik>
                   </div>
                 </Tab.Pane>
 
