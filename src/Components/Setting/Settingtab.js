@@ -81,7 +81,7 @@ const Settingtab = () => {
       <div className="setting-tabs">
         <Tab.Container id="left-tabs-example" defaultActiveKey="Profile">
           <Row>
-            <Col lg={3} className="mb-lg-0 mb-md-3">
+        <Col lg={3} className="mb-lg-0 mb-md-3" >
               <Nav variant="pills" className="flex-column">
                 <Nav.Item>
                   <Nav.Link eventKey="Profile">Profile</Nav.Link>
@@ -106,8 +106,8 @@ const Settingtab = () => {
             <Col lg={9}>
               <Tab.Content>
                 <Tab.Pane eventKey="Profile">
-                  <div className="personal-info">
-                    <div className="tab-heading">
+              <div className='personal-info'>
+              <div className='tab-heading'>
                       <h6>Personal info</h6>
                       <p>Update your photo and personal details.</p>
                     </div>
