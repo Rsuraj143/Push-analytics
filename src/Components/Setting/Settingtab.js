@@ -39,7 +39,11 @@ const schema = yup.object().shape({
     .required()
     .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i, "Invalid format"),
   number: yup.number().required(),
-  password: yup.string()
+  currentPassword: yup.string()
+    .min(5, "Atleast 6 characters long")
+    .max(50, "Too Long")
+    .required(),
+  newPassword: yup.string()
     .min(5, "Atleast 6 characters long")
     .max(50, "Too Long")
     .required(),
@@ -123,9 +127,9 @@ const Settingtab = () => {
 
                     <Formik
                       validationSchema={schema}
+                      validateOnChange={false}
                       onSubmit={(values) => {
-                        alert(JSON.stringify(values));
-                        console.log(values);
+                      console.log(values);
                       }}
                       initialValues={{
                         firstName: "",
@@ -159,7 +163,11 @@ const Settingtab = () => {
                                   name="firstName"
                                   value={values.firstName}
                                   onChange={handleChange}
-                                  isInvalid={!!errors.firstName}
+                                  onBlur={handleBlur}
+                                  isValid={touched.firstName && !errors.firstName}
+                                  isInvalid={
+                                    touched.firstName && !!errors.firstName
+                                  }
                                   className="user-input"
                                 />
                                 <Form.Control.Feedback type="invalid">
@@ -175,7 +183,11 @@ const Settingtab = () => {
                                   name="lastName"
                                   value={values.lastName}
                                   onChange={handleChange}
-                                  isInvalid={!!errors.lastName}
+                                  isValid={touched.lastName && !errors.lastName}
+                                  isInvalid={
+                                    touched.lastName && !!errors.lastName
+                                  }
+                                  onBlur={handleBlur}
                                   className="user-input"
                                 />
                                 <Form.Control.Feedback type="invalid">
@@ -193,8 +205,12 @@ const Settingtab = () => {
                                   className="user-input"
                                   placeholder="Email"
                                   name="email"
-                                  isInvalid={!!errors.email}
+                                  isValid={touched.email && !errors.email}
+                                  isInvalid={
+                                    touched.email && !!errors.email
+                                  }
                                   onChange={handleChange}
+                                  onBlur={handleBlur}
                                   value={values.email}
                                 />
                                 <Form.Control.Feedback type="invalid">
@@ -229,6 +245,7 @@ const Settingtab = () => {
                                   value={`${value.dial_code} ${phone}`}
                                   name="number"
                                   onChange={addPhoneNumber}
+                                  onBlur={handleBlur}
                                 />
                               </InputGroup>
                             </Col>
@@ -300,7 +317,8 @@ const Settingtab = () => {
                       onSubmit={handleSubmit}
                       validateOnChange={false}
                       initialValues={{
-                        password: "",
+                        currentPassword: "",
+                        newPassword: "",
                         confirmPassword: "",
                       }}
                     >
@@ -330,17 +348,17 @@ const Settingtab = () => {
                                   className="user-input"
                                   type="password"
                                   placeholder="password"
-                                  name="password"
-                                  value={values.password}
+                                  name="currentPassword"
+                                  value={values.currentPassword}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  isValid={touched.password && !errors.password}
+                                  isValid={touched.currentPassword && !errors.currentPassword}
                                   isInvalid={
-                                    touched.password && !!errors.password
+                                    touched.currentPassword && !!errors.currentPassword
                                   }
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                  {errors.password}
+                                  {errors.currentPassword}
                                 </Form.Control.Feedback>
                                 <Form.Control.Feedback>
                                   Looks good!
@@ -359,22 +377,22 @@ const Settingtab = () => {
                                 className="user-group mb-lg-0"
                                 controlId="exampleForm.ControlInput1"
                               >
-                                <Form.Label>Current password</Form.Label>
+                                <Form.Label>New password</Form.Label>
                                 <Form.Control
                                   className="user-input"
                                   type="password"
                                   placeholder="password"
-                                  name="password"
-                                  value={values.password}
+                                  name="newPassword"
+                                  value={values.newPassword}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  isValid={touched.password && !errors.password}
+                                  isValid={touched.newPassword && !errors.newPassword}
                                   isInvalid={
-                                    touched.password && !!errors.password
+                                    touched.newPassword && !!errors.newPassword
                                   }
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                  {errors.password}
+                                  {errors.newPassword}
                                 </Form.Control.Feedback>
                                 <Form.Control.Feedback>
                                   Looks good!
