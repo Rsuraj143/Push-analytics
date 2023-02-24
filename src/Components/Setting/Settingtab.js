@@ -347,7 +347,7 @@ const Settingtab = () => {
                                 <Form.Control
                                   className="user-input"
                                   type="password"
-                                  placeholder="password"
+                                  placeholder="Current password"
                                   name="currentPassword"
                                   value={values.currentPassword}
                                   onChange={handleChange}
@@ -381,7 +381,7 @@ const Settingtab = () => {
                                 <Form.Control
                                   className="user-input"
                                   type="password"
-                                  placeholder="password"
+                                  placeholder="New password"
                                   name="newPassword"
                                   value={values.newPassword}
                                   onChange={handleChange}
