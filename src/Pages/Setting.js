@@ -7,7 +7,7 @@ import SlideBar from '../Components/SlideBar/SlideBar'
 const Setting = () => {
   return (
     <div>
-      <SlideBar/>
+      {/* <SlideBar/> */}
       <Header>
       <Settingtab/>
       </Header>

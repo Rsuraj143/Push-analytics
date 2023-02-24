@@ -6,7 +6,7 @@ import Tabs from '../Components/tabs/Tabs'
 const DailyFlash = () => {
   return (
     <div>
-        <SlideBar/>
+        {/* <SlideBar/> */}
         <Header>
         <Tabs/>
         </Header>

@@ -5,14 +5,16 @@ import Liveview from "../../Images/Live-view.svg";
 import dashbord from "../../Images/Dashboard.svg";
 import DailyFlash from "../../Images/Daily-Flash.svg";
 import sales from "../../Images/sales.svg";
+import user from "../../Images/h-user.svg"
 import Products from "../../Images/Products.svg";
 import Audience from "../../Images/Audience.svg";
+import  Search  from "../../Images/search.svg"
 import siderbarbtn from "../../Images/siderbar-btn.svg";
 import English from "../../Images/English.svg";
 import Logout from "../../Images/Logout.svg";
 import Settings from "../../Images/Settings.svg";
 
-const SlideBar = () => {
+const SlideBar = ({humburgerStatus, setHumburgerStatus}) => {
   const [click, setClick] = useState(false);
   // const handleClick = () => setClick(!click);
 
@@ -23,7 +25,9 @@ const SlideBar = () => {
   };
 
   return (
-    <div class={click ? "sidebar" : "sidebar active"}>
+
+    // hamburger-open
+    <div class={`sidebar ${click ? "active" :""} ${ humburgerStatus ? "hamburger-open" : "" }`}>
       <div class="logo_content">
         <div class="logo">
           <div class="logoname" style={{ marginleft: "5px" }}>
@@ -37,10 +41,22 @@ const SlideBar = () => {
           onClick={() => handleSlide()}
           alt="dashbord"
         />
+        <img src={siderbarbtn} className="h-close" alt="dashbord" onClick={()=> setHumburgerStatus(!humburgerStatus)}/>
       </div>
 
       <div className="sidebar-box">
         <ul class="nav_list">
+        <div className="user-box d-flex align-items-center">
+          <img src={user} alt="user" />
+            <div className="text">
+                <h2>Kate Miller</h2>
+                <a href="mailto:kate@gmail.com">kate@gmail.com</a>
+            </div>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search..." />
+            <img src={Search}  alt="dashbord"/>
+          </div>
           <li>
             <Link to="/liveView">
               <div className="icons">

@@ -8,12 +8,20 @@ import  Search  from "../../Images/search.svg"
 import  Leslie  from "../../Images/Leslie.svg"
 import  Arlene  from "../../Images/Arlene.svg"
 import  Albert   from "../../Images/Albert.svg"
+import  hamburger   from "../../Images/hamburger.svg"
+import SlideBar from '../SlideBar/SlideBar'
 const Header = ({children}) => {
   const [showNotification, setShowNotification] = useState(false)
+  const [humburgerStatus, setHumburgerStatus] = useState(false)
   return (
+    <>
+    <SlideBar humburgerStatus={humburgerStatus} setHumburgerStatus={setHumburgerStatus}/>
     <div class="home_content">
       <header class="header">
         <div class="header-main">
+          <div className='hamburger' onClick={()=> setHumburgerStatus(!humburgerStatus)}>
+            <img src={hamburger}  alt="dashbord" />
+          </div>
           <div class="search-box">
             <input type="text" placeholder="Search..." />
             <img src={Search}  alt="dashbord"/>
@@ -22,11 +30,11 @@ const Header = ({children}) => {
             <li>
               <Link to="#"><img src={notification} alt="notification" onClick={()=> setShowNotification(!showNotification)} /></Link>
             </li>
-            <li>
+            <li className='msg'>
               <Link to="/"><img src={msg} alt="msg" /></Link>
             </li>
 
-            <li>
+            <li className='d-none d-lg-block'>
               <Link to="/"><img src={user} alt="user" /></Link>
             </li>
           </ul>
@@ -93,7 +101,7 @@ const Header = ({children}) => {
      </div>
      }
     </div>
-    
+     </>
   )
 }
 

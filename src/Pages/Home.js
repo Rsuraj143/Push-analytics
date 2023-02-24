@@ -6,7 +6,7 @@ import Tabs from '../Components/tabs/Tabs'
 const Home = () => {
   return (
     <div>
-        <SlideBar/>
+        {/* <SlideBar/> */}
         <Header>
         
         </Header>

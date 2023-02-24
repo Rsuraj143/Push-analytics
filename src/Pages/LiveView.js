@@ -6,7 +6,7 @@ import Live_view from '../Components/LiveView/Live_view'
 const LiveView = () => {
   return (
     <div>
-      <SlideBar/>
+      {/* <SlideBar/> */}
       <Header>
         <Live_view/>
       </Header>
