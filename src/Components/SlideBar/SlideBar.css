@@ -141,13 +141,17 @@
     flex-direction: column;
     height: 100vh;
     padding-bottom: 80px;
+    overflow-y: scroll;
 }
+.sidebar-box::-webkit-scrollbar {
+    display: none;
+  }
 
 .h-close{
     position:absolute;
     right: 0;
     top: 50%;
-    transform: translateY(-50%) rotate(180deg);
+    transform: translateY(-50%);
     display: none;
 }
 .sidebar-box .search-box{
@@ -175,6 +179,7 @@ margin-right: 12px;
     line-height: 20px;
     color: #94A3B8;
     text-decoration: none;
+    display: block;
 }
 @media (max-width:991px){
     .user-box{

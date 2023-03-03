@@ -45,12 +45,12 @@ border-radius: 12px 12px 0px 0px !important;
     line-height: 24px;
     color: #1E293B;
 }
-.tabs-main .down-up-text{
+ .down-up-text{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.tabs-main .down-up-text p{
+.down-up-text p{
     margin: 0 15px 0 0;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -59,25 +59,25 @@ border-radius: 12px 12px 0px 0px !important;
     color: #1E293B;
 
 }
-.tabs-main .down-up-text span{
+.down-up-text span{
     display: flex;
     align-items: center;
 }
-.tabs-main .down-up-text span p{
+.down-up-text span p{
     margin: 0 0 0 5px;
 }
-.tabs-main .down-up-text .down-text p{
+.down-up-text .down-text p{
     color: #D5095E;
 }
-.tabs-main .down-up-text .down-text svg{
+ .down-up-text .down-text svg{
     fill: #D5095E;
     width: 18px;
     height: 18px;
 }
-.tabs-main .down-up-text .up-text p{
+ .down-up-text .up-text p{
     color: #1B760C;
 }
-.tabs-main .down-up-text .up-text svg{
+ .down-up-text .up-text svg{
     color: #1B760C;
     width: 18px;
     height: 18px;
@@ -89,9 +89,10 @@ border-radius: 12px 12px 0px 0px !important;
     padding: 0 30px 0 24px;
 }
 .tab-box .scroll-left > :first-child{
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 }
 .tab-box .item{
     display: inline-block;
@@ -101,6 +102,7 @@ border-radius: 12px 12px 0px 0px !important;
     border-radius: 12px;
     margin-right: 12px;
     min-width: 150px;
+    margin-bottom: 30px;
 }
 .tab-box .item .heading1{
     display: flex;
@@ -159,7 +161,128 @@ border-radius: 12px 12px 0px 0px !important;
     margin-bottom: 0;
 }
 
-.date{
+/* mob-heading */
+.mob-heading{
+    padding: 0 20px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+}
+.heading-right .btn-primary{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 5px -3px rgba(178, 191, 211, 0.11), 0px 3px 16px -3px rgba(209, 213, 220, 0.07);
+    border-radius: 8px;
+    border: transparent;
+}
+.heading-right .btn-primary.active {
+    background: rgba(162, 44, 165, 0.17);
+    border: 1px solid #A22CA5;
+}
+.heading-left .down-up-text{
+    margin-right: 10px;
+}
+.heading-left .down-up-text p{
+    margin-right: 5px;
+}
+@media (max-width:991px){
+.main-heading{
+    display: none;
+}
+.setting-tabs{
+    padding: 20px 20px 30px;
+}
+.tabs-main .nav-tabs{
+    padding-left: 20px;
+}
+.tab-box{
+    padding: 0 20px 0 20px;
+}
+.tabs-main .nav-link h4{
+    margin-bottom: 0;
+    font-size: 13px;
+}
+.tabs-main .nav-link h4 span{
+    display: none;
+}
+.tabs-main .down-up-text{
+    display: none;
+}
+.tabs-main .nav-tabs{
+    border-bottom: 0;
+    background: #F1F5F9;
+    border-radius: 6px;
+    padding: 2px 2px 2px 2px;
+    margin: 20px 15px 0;
+}
+.tabs-main .nav-link{
+    border: 0 !important;
+    padding: 5px 10px;
+}
+.tabs-main .nav-link.active{
+    border: 0.5px solid rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12), 0px 3px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 6px !important;
+}
+.tabs-main .nav-item{
+    position: relative;
+    padding: 0 10px;
+    margin-right: 0;
+}
+.tabs-main .nav-link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 12px;
+    background: #8E8E93;
+    opacity: 0.3;
+    border-radius: 0.5px;
+}
+.tabs-main .nav-link.active::after{
+    display: none;
+}
+.tabs-main .nav-item:last-child .nav-link::after{
+    display: none;
+}
+.mob-heading{
+    display: flex;
+}
+}
+@media (max-width:767px){
+    .tabs-main .nav-item{
+        padding: 0 5px;
+    }
+    .tabs-main .nav-link{
+        padding: 5px 5px;
+    }
+    .tabs-main .nav-link h4{
+        font-size: 12px;
+    }
+    .tab-box .scroll-left > :first-child{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .tab-box .item{
+        margin-bottom: 0;
+        margin-right: 0;
+        min-width: 135px;
+    }
+}
+
+@media (max-width:575px){
+    .main-heading h1{
+        margin-bottom: 30px;
+    }
+    .tab-box .scroll-left > :first-child{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .tab-box .item .heading1 h4{
+        font-size: 12px
+    }
     
 }
 
