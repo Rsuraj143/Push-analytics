@@ -35,7 +35,7 @@ const schema = yup.object().shape({
   confirmPassword: yup
     .string()
     .required("Required")
-    .oneOf([yup.ref("password"), null], "Passwords must match"),
+    .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
 });
 const PersonalInfo = () => {
   const [file, setFile] = useState(null);
@@ -149,11 +149,13 @@ const PersonalInfo = () => {
                       className="user-input"
                       placeholder="Email"
                       name="email"
-                      isValid={touched.email && !errors.email}
-                      isInvalid={touched.email && !!errors.email}
+                      value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.email}
+                      isValid={touched.email && !errors.email}
+                      isInvalid={touched.email && !!errors.email}
+                      
+                 
                     />
                     <Form.Control.Feedback type="invalid">
                       {errors.email}

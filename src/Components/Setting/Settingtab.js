@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 import "./Settingtab.css";
 import { Col, Nav, Row, Tab } from "react-bootstrap";
 import PersonalInfo from "./PersonalInfo";
