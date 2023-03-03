@@ -98,7 +98,8 @@ const PersonalInfo = () => {
             isValid,
             errors,
           }) => (
-            <Form className="account-form" noValidate onSubmit={handleSubmit}>
+            <Form className="account-form p-0 border-bottom-0" noValidate onSubmit={handleSubmit}>
+              <div className="account-form-inner">
               <Row>
                 <Col lg={6}>
                   <Form.Group
@@ -109,6 +110,7 @@ const PersonalInfo = () => {
                     <Form.Control
                       type="text"
                       name="firstName"
+                      placeholder="First name"
                       value={values.firstName}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -127,6 +129,7 @@ const PersonalInfo = () => {
                     <Form.Control
                       type="text"
                       name="lastName"
+                      placeholder="Last name"
                       value={values.lastName}
                       onChange={handleChange}
                       isValid={touched.lastName && !errors.lastName}
@@ -194,7 +197,7 @@ const PersonalInfo = () => {
                 <Col
                   lg={2}
                   xxl={1}
-                  className="mb-3 text-lg-start text-md-center"
+                  className="mb-3 text-lg-start text-center"
                 >
                   <img
                     src={uploaduser}
@@ -235,7 +238,8 @@ const PersonalInfo = () => {
                   </div>
                 </Col>
               </Row>
-              <div className="text-lg-end text-md-start button-box">
+              </div>
+              <div className="text-sm-end text-center button-box">
                 <Button className="my-button my-button-transparent">
                   Cancel
                 </Button>
@@ -243,6 +247,7 @@ const PersonalInfo = () => {
                   Save changes
                 </Button>
               </div>
+
             </Form>
           )}
         </Formik>
@@ -273,10 +278,11 @@ const PersonalInfo = () => {
             isValidating,
           }) => (
             <Form
-              className="account-form"
+              className="account-form p-0 border-bottom-0"
               noValidate
               onSubmit={(event) => handleSubmit(event)}
             >
+               <div className="account-form-inner">
               <Row>
                 <Col lg={6}>
                   <Form.Group
@@ -364,7 +370,8 @@ const PersonalInfo = () => {
                   </Form.Group>
                 </Col>
               </Row>
-              <div className="text-lg-end text-md-start button-box">
+              </div>
+              <div className="text-sm-end text-center button-box">
                 <Button href="#" className="my-button my-button-transparent">
                   Cancel
                 </Button>

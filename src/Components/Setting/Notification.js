@@ -107,7 +107,7 @@ const Notification = () => {
                         </Col>
                       </Row>
                     </div>
-                    <div className="text-lg-end text-md-start button-box">
+                    <div className="text-sm-end text-center button-box">
                       <Button
                         href="#"
                         className="my-button my-button-transparent"

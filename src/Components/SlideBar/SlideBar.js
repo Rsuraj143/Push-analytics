@@ -58,7 +58,7 @@ const SlideBar = ({humburgerStatus, setHumburgerStatus}) => {
             <img src={Search}  alt="dashbord"/>
           </div>
           <li>
-            <Link to="/liveView">
+            <Link to="/liveView" state={{path: "Live view"}}>
               <div className="icons">
                 <img src={Liveview} alt="dashbord" />
               </div>
@@ -77,7 +77,7 @@ const SlideBar = ({humburgerStatus, setHumburgerStatus}) => {
             <span class="tooltip">Dashboard</span>
           </li>
           <li>
-            <NavLink to="/dailyFlash">
+            <NavLink to="/dailyFlash" state={{path: "Daily Flash"}}>
               <div className="icons">
                 <img src={DailyFlash} alt="dashbord" />
               </div>
@@ -128,7 +128,7 @@ const SlideBar = ({humburgerStatus, setHumburgerStatus}) => {
             <span class="tooltip">English</span>
           </li>
           <li>
-            <NavLink to="/setting">
+            <NavLink to="/setting" state={{path: "Settings"}}>
               <div className="icons">
                 <img src={Settings} alt="dashbord" />
               </div>

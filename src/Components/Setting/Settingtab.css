@@ -123,9 +123,11 @@
 .account-form{
     background: #FFFFFF;
     border: 1px solid #EAECF0;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
     padding: 24px;
-    border-bottom: 0;
+}
+.account-form-inner{
+    padding: 24px;
 }
 .user-group{
     margin-bottom: 24px;
@@ -207,11 +209,16 @@ form .forget-text{
     padding: 16px 24px;
     background: #FFFFFF;
     border: 1px solid #EAECF0;
+    border-left: 0;
+    border-right: 0;
     border-radius: 0 0 8px 8px;
 }
 
 
 /* tabel */
+.tabel-main{
+    overflow: hidden;
+}
 table{
     table-layout: fixed;
     border-color:#F1F5F9 !important ;
@@ -581,7 +588,16 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 @media (max-width:991px){
+    table tr th{
+        padding: 12px 12px !important;
+    }
+    table tr td{
+        padding: 12px 12px !important;
+    }
     .notification-right .notification-form .form-switch {
         padding: 22px 24px;
+    }
+    .sidebar ul li .tooltip{
+        display: none;
     }
 }

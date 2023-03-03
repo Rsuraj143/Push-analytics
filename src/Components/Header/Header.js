@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./Header.css"
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useRoutes } from 'react-router-dom'
 import notification from "../../Images/h-notification.svg"
 import msg from "../../Images/h-msg.svg"
 import user from "../../Images/h-user.svg"
@@ -13,6 +13,8 @@ import SlideBar from '../SlideBar/SlideBar'
 const Header = ({children}) => {
   const [showNotification, setShowNotification] = useState(false)
   const [humburgerStatus, setHumburgerStatus] = useState(false)
+
+  let {state} = useLocation();
   return (
     <>
     <SlideBar humburgerStatus={humburgerStatus} setHumburgerStatus={setHumburgerStatus}/>
@@ -22,11 +24,14 @@ const Header = ({children}) => {
           <div className='hamburger' onClick={()=> setHumburgerStatus(!humburgerStatus)}>
             <img src={hamburger}  alt="dashbord" />
           </div>
+          <div className='mob-heading-main'>
+            <h2>{state?.path ? state?.path : "Daily Flash" }</h2>
+          </div>
           <div class="search-box">
             <input type="text" placeholder="Search..." />
             <img src={Search}  alt="dashbord"/>
           </div>
-          <ul class="icon-list">
+          <ul class="icon-list p-0">
             <li>
               <Link to="#"><img src={notification} alt="notification" onClick={()=> setShowNotification(!showNotification)} /></Link>
             </li>
