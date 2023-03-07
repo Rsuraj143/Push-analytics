@@ -95,7 +95,7 @@ const DailyFlashComponent = () => {
           </TabList>
           <TabPanel>
             <Tabs>
-              <TabList className="tab_card">
+              <TabList className="tab_card tab-box">
                 {data.map((item) => (
                   <Tab>
                     <div className="item">

@@ -29,7 +29,6 @@ const schema = yup.object().shape({
     .required()
     .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i, "Invalid format"),
   // number: yup.string().required(),
-  
 });
 const schema2 = yup.object().shape({
   currentPassword: yup
@@ -46,7 +45,7 @@ const schema2 = yup.object().shape({
     .string()
     .required("Required")
     .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
-})
+});
 const PersonalInfo = () => {
   const [file, setFile] = useState(null);
   const [country, setCountry] = useState([]);
@@ -75,10 +74,10 @@ const PersonalInfo = () => {
     const [dial_code, number] = e.target.value.split(value.dial_code);
     setphoneCode(value.dial_code);
     setPhone(number.trim());
-  };                                                                                                                                                                                                                                                                                                                                                                              
+  };
 
   const handleSubmit = (values, event) => {
-    values.number = phoneCode+phone;
+    values.number = phoneCode + phone;
     values.file = file;
     console.log(values);
   };
@@ -100,7 +99,7 @@ const PersonalInfo = () => {
             lastName: "",
             email: "",
             number: "",
-            file : ""
+            file: "",
           }}
         >
           {({
@@ -212,51 +211,50 @@ const PersonalInfo = () => {
                   </Col>
                 </Row>
                 <Row>
-                <Col
-                  lg={2}
-                  xxl={1}
-                  className="mb-3 text-lg-start text-center"
-                >
-                  <img
-                    src={uploaduser}
-                    className="uploaduser"
-                    alt="uploaduser"
-                  />
-                </Col>
-                <Col lg={10} xxl={11}>
-                  <div className="upload-box">
-                    <input
-                      type="file"
-                      name="file"
-                      id="file"
-                      className="d-none"
-                      value={values.file}
-                      onChange={(e) => {
-                        setFile(e.target.files[0]);
-                      }}
-                      
+                  <Col
+                    lg={2}
+                    xxl={1}
+                    className="mb-3 text-lg-start text-center"
+                  >
+                    <img
+                      src={uploaduser}
+                      className="uploaduser"
+                      alt="uploaduser"
                     />
-                    {!file ? (
-                      <label for="file">
-                        <img src={upload} alt="upload" />
-                        <p>
-                          <span>Click to upload</span> or drag and drop{" "}
-                          <br></br>
-                          SVG, PNG, JPG or GIF (max. 800x400px)
-                        </p>
-                      </label>
-                    ) : (
-                      <div>
-                        {file?.name}
-                        <AiFillCloseCircle
-                          onClick={() => setFile(null)}
-                          className="close-file"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </Col>
-              </Row>
+                  </Col>
+                  <Col lg={10} xxl={11}>
+                    <div className="upload-box">
+                      <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        className="d-none"
+                        value={values.file}
+                        onChange={(e) => {
+                          setFile(e.target.files[0]);
+                        }}
+                      />
+                      {!file ? (
+                        <label for="file">
+                          <img src={upload} alt="upload" />
+                          <p>
+                            <span>Click to upload</span> or drag and drop{" "}
+                            <br></br>
+                            SVG, PNG, JPG or GIF (max. 800x400px)
+                          </p>
+                        </label>
+                      ) : (
+                        <div>
+                          {file?.name}
+                          <AiFillCloseCircle
+                            onClick={() => setFile(null)}
+                            className="close-file"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </Col>
+                </Row>
               </div>
               <div className="text-sm-end text-center button-box">
                 <Button className="my-button my-button-transparent">
