@@ -9,7 +9,7 @@ const DailyFlash = () => {
     <div>
         {/* <SlideBar/> */}
         <Header>
-        <Tabs/>
+        <DailyFlashComponent/>
         </Header>
 
     </div>
