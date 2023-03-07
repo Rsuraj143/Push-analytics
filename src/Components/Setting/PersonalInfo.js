@@ -1,6 +1,13 @@
 import "./Settingtab.css";
 import React, { useEffect, useState } from "react";
-import {Col,Dropdown,DropdownButton,Form,InputGroup,Row} from "react-bootstrap";
+import {
+  Col,
+  Dropdown,
+  DropdownButton,
+  Form,
+  InputGroup,
+  Row,
+} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import * as yup from "yup";
 import { Formik } from "formik";
@@ -21,7 +28,10 @@ const schema = yup.object().shape({
     .string()
     .required()
     .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i, "Invalid format"),
-  number: yup.number().required(),
+  // number: yup.string().required(),
+  
+});
+const schema2 = yup.object().shape({
   currentPassword: yup
     .string()
     .min(5, "Atleast 6 characters long")
@@ -36,12 +46,13 @@ const schema = yup.object().shape({
     .string()
     .required("Required")
     .oneOf([yup.ref("newPassword"), null], "Passwords must match"),
-});
+})
 const PersonalInfo = () => {
   const [file, setFile] = useState(null);
   const [country, setCountry] = useState([]);
   const [value, setValue] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneCode, setphoneCode] = useState("");
 
   useEffect(() => {
     getcounty();
@@ -62,13 +73,16 @@ const PersonalInfo = () => {
   };
   const addPhoneNumber = (e) => {
     const [dial_code, number] = e.target.value.split(value.dial_code);
+    setphoneCode(value.dial_code);
     setPhone(number.trim());
-  };
+  };                                                                                                                                                                                                                                                                                                                                                                              
 
   const handleSubmit = (values, event) => {
+    values.number = phoneCode+phone;
+    values.file = file;
     console.log(values);
-    console.log("form submit values", event);
   };
+
   return (
     <div>
       <div className="personal-info">
@@ -80,13 +94,13 @@ const PersonalInfo = () => {
         <Formik
           validationSchema={schema}
           validateOnChange={false}
-          onSubmit={(values) => {
-            console.log(values);
-          }}
+          onSubmit={handleSubmit}
           initialValues={{
             firstName: "",
             lastName: "",
             email: "",
+            number: "",
+            file : ""
           }}
         >
           {({
@@ -98,104 +112,106 @@ const PersonalInfo = () => {
             isValid,
             errors,
           }) => (
-            <Form className="account-form p-0 border-bottom-0" noValidate onSubmit={handleSubmit}>
+            <Form
+              className="account-form p-0 border-bottom-0"
+              noValidate
+              onSubmit={handleSubmit}
+            >
               <div className="account-form-inner">
-              <Row>
-                <Col lg={6}>
-                  <Form.Group
-                    className="user-group"
-                    controlId="validationFormik01"
-                  >
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      placeholder="First name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.firstName && !errors.firstName}
-                      isInvalid={touched.firstName && !!errors.firstName}
-                      className="user-input"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.firstName}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col lg={6}>
-                  <Form.Group className="user-group">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      placeholder="Last name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isValid={touched.lastName && !errors.lastName}
-                      isInvalid={touched.lastName && !!errors.lastName}
-                      onBlur={handleBlur}
-                      className="user-input"
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.lastName}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={6}>
-                  <Form.Group className="user-group">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      className="user-input"
-                      placeholder="Email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.email && !errors.email}
-                      isInvalid={touched.email && !!errors.email}
-                      
-                 
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.email}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col lg={6}>
-                  <Form.Label>Phone</Form.Label>
-                  <InputGroup className="mb-3">
-                    <DropdownButton
-                      variant="outline-secondary"
-                      title={value.code}
+                <Row>
+                  <Col lg={6}>
+                    <Form.Group
+                      className="user-group"
+                      controlId="validationFormik01"
                     >
-                      {country.map((res) => (
-                        <Dropdown.Item
-                          key={res.code}
-                          title={res}
-                          eventKey={res.key}
-                          active={res.code === value.code ? true : false}
-                          onClick={() => handleSelect(res)}
-                        >
-                          {res.code}
-                        </Dropdown.Item>
-                      ))}
-                    </DropdownButton>
-                    <Form.Control
-                      className="user-input"
-                      aria-label="Text input with dropdown button"
-                      value={`${value.dial_code} ${phone}`}
-                      name="number"
-                      onChange={addPhoneNumber}
-                      onBlur={handleBlur}
-                    />
-                  </InputGroup>
-                </Col>
-              </Row>
-              <Row>
+                      <Form.Label>First name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="firstName"
+                        placeholder="First name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.firstName && !errors.firstName}
+                        isInvalid={touched.firstName && !!errors.firstName}
+                        className="user-input"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.firstName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col lg={6}>
+                    <Form.Group className="user-group">
+                      <Form.Label>Last name</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="lastName"
+                        placeholder="Last name"
+                        value={values.lastName}
+                        onChange={handleChange}
+                        isValid={touched.lastName && !errors.lastName}
+                        isInvalid={touched.lastName && !!errors.lastName}
+                        onBlur={handleBlur}
+                        className="user-input"
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.lastName}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={6}>
+                    <Form.Group className="user-group">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        className="user-input"
+                        placeholder="Email"
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.email && !errors.email}
+                        isInvalid={touched.email && !!errors.email}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.email}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col lg={6}>
+                    <Form.Label>Phone</Form.Label>
+                    <InputGroup className="mb-3">
+                      <DropdownButton
+                        variant="outline-secondary"
+                        title={value.code}
+                      >
+                        {country.map((res) => (
+                          <Dropdown.Item
+                            key={res.code}
+                            title={res}
+                            eventKey={res.key}
+                            active={res.code === value.code ? true : false}
+                            onClick={() => handleSelect(res)}
+                          >
+                            {res.code}
+                          </Dropdown.Item>
+                        ))}
+                      </DropdownButton>
+                      <Form.Control
+                        className="user-input"
+                        aria-label="Text input with dropdown button"
+                        value={`${value.dial_code} ${phone}`}
+                        name="number"
+                        onChange={addPhoneNumber}
+                        onBlur={handleBlur}
+                      />
+                    </InputGroup>
+                  </Col>
+                </Row>
+                <Row>
                 <Col
                   lg={2}
                   xxl={1}
@@ -214,10 +230,11 @@ const PersonalInfo = () => {
                       name="file"
                       id="file"
                       className="d-none"
+                      value={values.file}
                       onChange={(e) => {
                         setFile(e.target.files[0]);
-                        e.target.value = null;
                       }}
+                      
                     />
                     {!file ? (
                       <label for="file">
@@ -249,7 +266,6 @@ const PersonalInfo = () => {
                   Save changes
                 </Button>
               </div>
-
             </Form>
           )}
         </Formik>
@@ -260,7 +276,7 @@ const PersonalInfo = () => {
           <p>Update your password.</p>
         </div>
         <Formik
-          validationSchema={schema}
+          validationSchema={schema2}
           onSubmit={handleSubmit}
           validateOnChange={false}
           initialValues={{
@@ -284,94 +300,94 @@ const PersonalInfo = () => {
               noValidate
               onSubmit={(event) => handleSubmit(event)}
             >
-               <div className="account-form-inner">
-              <Row>
-                <Col lg={6}>
-                  <Form.Group
-                    className="user-group"
-                    controlId="exampleForm.ControlInput1"
-                  >
-                    <Form.Label>Current password</Form.Label>
-                    <Form.Control
-                      className="user-input"
-                      type="password"
-                      placeholder="Current password"
-                      name="currentPassword"
-                      value={values.currentPassword}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={
-                        touched.currentPassword && !errors.currentPassword
-                      }
-                      isInvalid={
-                        touched.currentPassword && !!errors.currentPassword
-                      }
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.currentPassword}
-                    </Form.Control.Feedback>
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col lg={6} className="d-flex align-items-center">
-                  <p className="mb-lg-0 mb-md-3 forget-text">
-                    Did you forget your password?
-                  </p>
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={6}>
-                  <Form.Group
-                    className="user-group mb-lg-0"
-                    controlId="exampleForm.ControlInput1"
-                  >
-                    <Form.Label>New password</Form.Label>
-                    <Form.Control
-                      className="user-input"
-                      type="password"
-                      placeholder="New password"
-                      name="newPassword"
-                      value={values.newPassword}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.newPassword && !errors.newPassword}
-                      isInvalid={touched.newPassword && !!errors.newPassword}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.newPassword}
-                    </Form.Control.Feedback>
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-                <Col lg={6}>
-                  <Form.Group
-                    className="user-group mb-0"
-                    controlId="exampleForm.ControlInput1"
-                  >
-                    <Form.Label>Re-enter New Password</Form.Label>
-                    <Form.Control
-                      className="user-input"
-                      type="password"
-                      placeholder="password"
-                      name="confirmPassword"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.confirmPassword}
-                      isValid={
-                        !errors.confirmPassword && touched.confirmPassword
-                      }
-                      isInvalid={
-                        touched.confirmPassword && errors.confirmPassword
-                      }
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.confirmPassword}
-                    </Form.Control.Feedback>
+              <div className="account-form-inner">
+                <Row>
+                  <Col lg={6}>
+                    <Form.Group
+                      className="user-group"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Current password</Form.Label>
+                      <Form.Control
+                        className="user-input"
+                        type="password"
+                        placeholder="Current password"
+                        name="currentPassword"
+                        value={values.currentPassword}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={
+                          touched.currentPassword && !errors.currentPassword
+                        }
+                        isInvalid={
+                          touched.currentPassword && !!errors.currentPassword
+                        }
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.currentPassword}
+                      </Form.Control.Feedback>
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col lg={6} className="d-flex align-items-center">
+                    <p className="mb-lg-0 mb-md-3 forget-text">
+                      Did you forget your password?
+                    </p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col lg={6}>
+                    <Form.Group
+                      className="user-group mb-lg-0"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>New password</Form.Label>
+                      <Form.Control
+                        className="user-input"
+                        type="password"
+                        placeholder="New password"
+                        name="newPassword"
+                        value={values.newPassword}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        isValid={touched.newPassword && !errors.newPassword}
+                        isInvalid={touched.newPassword && !!errors.newPassword}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.newPassword}
+                      </Form.Control.Feedback>
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                  <Col lg={6}>
+                    <Form.Group
+                      className="user-group mb-0"
+                      controlId="exampleForm.ControlInput1"
+                    >
+                      <Form.Label>Re-enter New Password</Form.Label>
+                      <Form.Control
+                        className="user-input"
+                        type="password"
+                        placeholder="password"
+                        name="confirmPassword"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.confirmPassword}
+                        isValid={
+                          !errors.confirmPassword && touched.confirmPassword
+                        }
+                        isInvalid={
+                          touched.confirmPassword && errors.confirmPassword
+                        }
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {errors.confirmPassword}
+                      </Form.Control.Feedback>
 
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Col>
-              </Row>
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                  </Col>
+                </Row>
               </div>
               <div className="text-sm-end text-center button-box">
                 <Button href="#" className="my-button my-button-transparent">
