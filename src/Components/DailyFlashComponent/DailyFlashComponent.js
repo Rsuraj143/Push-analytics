@@ -164,19 +164,11 @@ const DailyFlashComponent = () => {
                   </AreaChart>
                 </TabPanel>
               ))}
-
-              {/* <TabPanel>MER(ROAS)-Graph</TabPanel>
-            <TabPanel>SALES-Graph</TabPanel>
-            <TabPanel>ORDERS-Graph</TabPanel>
-            <TabPanel>AOV-Graph</TabPanel>
-            <TabPanel>SESSIONS-Graph</TabPanel>
-            <TabPanel>CONV RATE-Graph</TabPanel>
-            <TabPanel>SPEND-Graph</TabPanel> */}
             </Tabs>
           </TabPanel>
           <TabPanel>
             <Tabs>
-              <TabList className="tab_card">
+              <TabList className="tab_card tab-box">
                 {data2.map((item) => (
                   <Tab>
                     <div className="item">
@@ -267,18 +259,11 @@ const DailyFlashComponent = () => {
                   </AreaChart>
                 </TabPanel>
               ))}
-              {/* <TabPanel>MER(ROAS)-Graph-prior week-2022</TabPanel>
-            <TabPanel>SALES-Graph-prior week-2022</TabPanel>
-            <TabPanel>ORDERS-Graph-prior week-2022</TabPanel>
-            <TabPanel>AOV-Graph-prior week-2022</TabPanel>
-            <TabPanel>SESSIONS-Graph-prior week-2022</TabPanel>
-            <TabPanel>CONV RATE-Graph-prior week-2022</TabPanel>
-            <TabPanel>SPEND-Graph-prior week-2022</TabPanel> */}
             </Tabs>
           </TabPanel>
           <TabPanel>
             <Tabs>
-              <TabList className="tab_card">
+              <TabList className="tab_card tab-box">
                 {data3.map((item) => (
                   <Tab>
                     <div className="item">
@@ -369,18 +354,11 @@ const DailyFlashComponent = () => {
                   </AreaChart>
                 </TabPanel>
               ))}
-              {/* <TabPanel>MER(ROAS)-Graph-prior year(2022)</TabPanel>
-            <TabPanel>SALES-Graph-prior year(2022)</TabPanel>
-            <TabPanel>ORDERS-Graph-prior year(2022)</TabPanel>
-            <TabPanel>AOV-Graph-prior year(2022)</TabPanel>
-            <TabPanel>SESSIONS-Graph-prior year(2022)</TabPanel>
-            <TabPanel>CONV RATE-Graph-prior year(2022)</TabPanel>
-            <TabPanel>SPEND-Graph-prior year(2022)</TabPanel> */}
             </Tabs>
           </TabPanel>
           <TabPanel>
             <Tabs>
-              <TabList className="tab_card">
+              <TabList className="tab_card tab-box">
                 {data4.map((item) => (
                   <Tab>
                     <div className="item">
@@ -471,13 +449,6 @@ const DailyFlashComponent = () => {
                   </AreaChart>
                 </TabPanel>
               ))}
-              {/* <TabPanel>MER(ROAS)-Graph-Goal Target-2023</TabPanel>
-            <TabPanel>SALES-Graph-Goal Target-2023</TabPanel>
-            <TabPanel>ORDERS-Graph-Goal Target-2023</TabPanel>
-            <TabPanel>AOV-Graph-Goal Target-2023</TabPanel>
-            <TabPanel>SESSIONS-Graph-Goal Target-2023</TabPanel>
-            <TabPanel>CONV RATE-Graph-Goal Target-2023</TabPanel>
-            <TabPanel>SPEND-Graph-Goal Target-2023</TabPanel> */}
             </Tabs>
           </TabPanel>
         </Tabs>
