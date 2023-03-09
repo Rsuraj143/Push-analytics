@@ -1,4 +1,4 @@
-import React from "react";
+
 import mer from "../../Images/mer.svg";
 import aov from "../../Images/card_aov.svg";
 import sale from "../../Images/card_sale.svg";

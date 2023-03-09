@@ -1,26 +1,25 @@
-import React from "react";
+
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import data from "../tabs/DayData";
-import data2 from "../tabs/WeeklyData";
-import data3 from "../tabs/YearlyData";
-import data4 from "../tabs/TargetData";
+import data from "../TabsCardData/DayData";
+import data2 from "../TabsCardData/WeeklyData";
+import data3 from "../TabsCardData/YearlyData";
+import data4 from "../TabsCardData/TargetData";
 import "./DailyFlashComponent.css";
 import {
   Area,
   AreaChart,
   CartesianGrid,
-  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { useEffect, useState } from "react";
 import "../tabs/tabs.css";
-import ChartData from "../Charts/ChartData";
-import ChartData2 from "../Charts/ChartData2";
-import ChartData3 from "../Charts/ChartData3";
-import ChartData4 from "../Charts/ChartData4";
+import ChartData1 from "../ChartsData/ChartData1";
+import ChartData2 from "../ChartsData/ChartData2";
+import ChartData3 from "../ChartsData/ChartData3";
+import ChartData4 from "../ChartsData/ChartData4";
 import { Form } from "react-bootstrap";
 import { BiTrendingDown } from "react-icons/bi";
 import { BiTrendingUp } from "react-icons/bi";
@@ -34,7 +33,7 @@ const DailyFlashComponent = () => {
 
 
   useEffect(() => {
-    setChartData(ChartData);
+    setChartData(ChartData1);
     setChartData2(ChartData2);
     setChartData3(ChartData3);
     setChartData4(ChartData4);
@@ -120,7 +119,7 @@ const DailyFlashComponent = () => {
                   </Tab>
                 ))}
               </TabList>
-              {ChartData.map((e, i) => (
+              {ChartData1.map((e, i) => (
                 <TabPanel>
                   <h4 className="mb-3">{e.title}</h4>
                   <AreaChart
